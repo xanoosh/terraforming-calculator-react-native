@@ -23,6 +23,17 @@ export default function App() {
     if (MMKV.getNumber('titanium')) setSteel(MMKV.getNumber('titanium'));
   }, []);
 
+  const handleResourceChange = (name, val) => {
+    switch (name) {
+      case 'money':
+        MMKV.set('money', val);
+      case 'steel':
+        MMKV.set('steel', val);
+      case 'titanium':
+        MMKV.set('titanium', val);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Resource name="Money" value={money} setValue={setMoney} />
