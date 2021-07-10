@@ -2,31 +2,44 @@
 import { StyleSheet, Modal, Text, Button, View } from 'react-native';
 import React, { useState, useEffect } from 'react';
 
-import ResourceModal from './ResourceModal';
+// import ResourceModal from './ResourceModal';
 
-const Resource = ({ name, value, setValue }) => {
-  const [opened, setOpened] = useState(false);
+const ResourceExpanded = ({ name, value, setValue }) => {
   return (
     <View style={styles.resource}>
       <Button
         style={styles.button}
-        onPress={() => setValue((prev) => prev + 1)}
-        title="+"
+        onPress={() => setValue((prev) => prev - 10)}
+        title="-10"
+      />
+      <Button
+        style={styles.button}
+        onPress={() => setValue((prev) => prev - 5)}
+        title="-5"
+      />
+
+      <Button
+        style={styles.button}
+        onPress={() => setValue((prev) => prev - 1)}
+        title="-1"
       />
       <Text style={styles.value}>{value}</Text>
       <Button
         style={styles.button}
-        onPress={() => setValue((prev) => prev - 1)}
-        title="-"
+        onPress={() => setValue((prev) => prev + 1)}
+        title="+1"
+      />
+      <Button
+        style={styles.button}
+        onPress={() => setValue((prev) => prev + 5)}
+        title="+5"
+      />
+      <Button
+        style={styles.button}
+        onPress={() => setValue((prev) => prev + 10)}
+        title="+10"
       />
       <Text style={styles.name}>{name}</Text>
-      <ResourceModal
-        opened={opened}
-        setOpened={setOpened}
-        name={name}
-        value={value}
-        setValue={setValue}
-      />
     </View>
   );
 };
@@ -67,4 +80,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Resource;
+export default ResourceExpanded;
