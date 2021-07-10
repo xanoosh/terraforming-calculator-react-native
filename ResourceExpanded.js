@@ -1,8 +1,6 @@
 // import styles from './styles.js';
-import { StyleSheet, Modal, Text, Button, View } from 'react-native';
-import React, { useState, useEffect } from 'react';
-
-// import ResourceModal from './ResourceModal';
+import { StyleSheet, Text, Button, View } from 'react-native';
+import React from 'react';
 
 const ResourceExpanded = ({ name, value, setValue }) => {
   return (

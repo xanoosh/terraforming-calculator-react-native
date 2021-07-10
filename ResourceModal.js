@@ -12,7 +12,8 @@ const ResourceModal = ({ opened, setOpened, name, value, setValue }) => {
         title="more"
       />
       <Modal
-        animationType="slide"
+        animationType="fade"
+        presentationStyle="overFullScreen"
         transparent={true}
         visible={opened}
         onRequestClose={() => {
@@ -21,7 +22,7 @@ const ResourceModal = ({ opened, setOpened, name, value, setValue }) => {
       >
         <View style={styles.centeredView}>
           <View>
-            <Pressable style={styles.button} onPress={() => setOpened(!opened)}>
+            <Pressable style={styles.close} onPress={() => setOpened(!opened)}>
               <Text style={styles.textStyle}>hide</Text>
             </Pressable>
             <ResourceExpanded name={name} value={value} setValue={setValue} />
@@ -33,16 +34,14 @@ const ResourceModal = ({ opened, setOpened, name, value, setValue }) => {
 };
 
 const styles = StyleSheet.create({
-  modal: {
-    display: 'flex',
-    flexDirection: 'row',
+  centeredView: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#333533',
-    width: '90%',
-    color: '#fff',
-    marginTop: 20,
-    padding: 10,
+    backgroundColor: 'red',
+    width: '100%',
+    height: '100%',
+    position: 'relative',
   },
   value: {
     color: '#fff',
@@ -55,10 +54,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
   },
-  button: {
-    // backgroundColor: '#fff',
-    marginTop: 20,
-    padding: 10,
+  close: {
+    position: 'absolute',
+    top: '10%',
+    right: '10%',
   },
 });
 

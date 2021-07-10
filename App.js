@@ -10,26 +10,33 @@ export default function App() {
   const [money, setMoney] = useState(0);
   const [steel, setSteel] = useState(0);
   const [titanium, setTitanium] = useState(0);
+  const [message, setMessage] = useState('');
 
   const getData = async (name) => {
     try {
       const value = await AsyncStorage.getItem(name);
       if (value !== null) return value;
-      else return undefined;
+      else return false;
     } catch (e) {
-      return undefined;
+      return false;
     }
   };
 
   //get stored data on app load
   useEffect(() => {
     (async () => {
-      const moneyValue = await getData('money');
+      await AsyncStorage.setItem('Titanium', 1 + '');
+      const moneyValue = await getData('Money');
       if (moneyValue) setMoney(Number(moneyValue));
-      const steelValue = await getData('steel');
+      setMessage((prev) => `${prev} money value: ${moneyValue}`);
+      const steelValue = await getData('Steel');
       if (steelValue) setSteel(Number(steelValue));
-      const titaniumValue = await getData('titanium');
+      setMessage((prev) => `${prev} steel value: ${steelValue}`);
+      const titaniumValue = await getData('Titanium');
       if (titaniumValue) setTitanium(Number(titaniumValue));
+      setMessage((prev) => `${prev} titanium value: ${titaniumValue}`);
+
+      setTitanium(1);
     })();
   }, []);
 
@@ -52,6 +59,7 @@ export default function App() {
         value={titanium}
         setValue={handleResourceChange}
       />
+      <Text style={{ fontSize: 21 }}>{message}</Text>
       <StatusBar style="auto" />
     </View>
   );
