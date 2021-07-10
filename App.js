@@ -41,22 +41,41 @@ export default function App() {
       if (energyValue) setEnergy(Number(energyValue));
       const heatValue = await getData('Heat');
       if (heatValue) setHeat(Number(heatValue));
-
-      setTitanium(1);
     })();
   }, []);
 
-  const handleResourceChange = (name, val) => {
-    if (name === 'Money') setMoney((prev) => prev + val);
-    if (name === 'Steel') setSteel((prev) => prev + val);
-    if (name === 'Titanium') setTitanium((prev) => prev + val);
-    if (name === 'Plant') setPlant((prev) => prev + val);
-    if (name === 'Energy') setEnergy((prev) => prev + val);
-    if (name === 'Heat') setHeat((prev) => prev + val);
-    //save resource changes in asyncstorage
+  //save resource changes in asyncstorage
+  const saveResource = (name, val) => {
     (async () => {
       await AsyncStorage.setItem(name, val + '');
     })();
+  };
+
+  const handleResourceChange = (name, val) => {
+    if (name === 'Money') {
+      saveResource(name, money + val);
+      setMoney((prev) => prev + val);
+    }
+    if (name === 'Steel') {
+      saveResource(name, steel + val);
+      setSteel((prev) => prev + val);
+    }
+    if (name === 'Titanium') {
+      saveResource(name, titanium + val);
+      setTitanium((prev) => prev + val);
+    }
+    if (name === 'Plant') {
+      saveResource(name, plant + val);
+      setPlant((prev) => prev + val);
+    }
+    if (name === 'Energy') {
+      saveResource(name, energy + val);
+      setEnergy((prev) => prev + val);
+    }
+    if (name === 'Heat') {
+      saveResource(name, heat + val);
+      setHeat((prev) => prev + val);
+    }
   };
 
   return (
@@ -71,7 +90,7 @@ export default function App() {
       <Resource name="Plant" value={plant} setValue={handleResourceChange} />
       <Resource name="Energy" value={energy} setValue={handleResourceChange} />
       <Resource name="Heat" value={heat} setValue={handleResourceChange} />
-      {/* <Text style={{ fontSize: 21 }}>{message}</Text> */}
+      {/* <Text style={{ fontSize: 21, color: '#fff' }}>{message}</Text> */}
       <StatusBar style="auto" />
     </View>
   );
