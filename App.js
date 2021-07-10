@@ -28,7 +28,6 @@ export default function App() {
   //get stored data on app load
   useEffect(() => {
     (async () => {
-      await AsyncStorage.setItem('Titanium', 1 + '');
       const moneyValue = await getData('Money');
       if (moneyValue) setMoney(Number(moneyValue));
       const steelValue = await getData('Steel');
