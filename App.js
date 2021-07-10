@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, Button, View } from 'react-native';
-import { MMKV } from 'react-native-mmkv';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 //style & components
 // import styles from './styles.js';
 import Resource from './Resource.js';
@@ -10,35 +10,48 @@ export default function App() {
   const [money, setMoney] = useState(0);
   const [steel, setSteel] = useState(0);
   const [titanium, setTitanium] = useState(0);
+
+  const getData = async (name) => {
+    try {
+      const value = await AsyncStorage.getItem(name);
+      if (value !== null) return value;
+      else return undefined;
+    } catch (e) {
+      return undefined;
+    }
+  };
+
+  //get stored data on app load
   useEffect(() => {
-    //get stored data on app load
-    if (MMKV.getNumber('money')) setMoney(MMKV.getNumber('money'));
-    if (MMKV.getNumber('steel')) setSteel(MMKV.getNumber('steel'));
-    if (MMKV.getNumber('titanium')) setSteel(MMKV.getNumber('titanium'));
-  }, []);
-  useEffect(() => {
-    //get stored data on app load
-    if (MMKV.getNumber('money')) setMoney(MMKV.getNumber('money'));
-    if (MMKV.getNumber('steel')) setSteel(MMKV.getNumber('steel'));
-    if (MMKV.getNumber('titanium')) setSteel(MMKV.getNumber('titanium'));
+    (async () => {
+      const moneyValue = await getData('money');
+      if (moneyValue) setMoney(Number(moneyValue));
+      const steelValue = await getData('steel');
+      if (steelValue) setSteel(Number(steelValue));
+      const titaniumValue = await getData('titanium');
+      if (titaniumValue) setTitanium(Number(titaniumValue));
+    })();
   }, []);
 
   const handleResourceChange = (name, val) => {
-    switch (name) {
-      case 'money':
-        MMKV.set('money', val);
-      case 'steel':
-        MMKV.set('steel', val);
-      case 'titanium':
-        MMKV.set('titanium', val);
-    }
+    if (name === 'Money') setMoney((prev) => prev + val);
+    if (name === 'Steel') setSteel((prev) => prev + val);
+    if (name === 'Titanium') setTitanium((prev) => prev + val);
+    //save resource changes in asyncstorage
+    (async () => {
+      await AsyncStorage.setItem(name, val + '');
+    })();
   };
 
   return (
     <View style={styles.container}>
-      <Resource name="Money" value={money} setValue={setMoney} />
-      <Resource name="Steel" value={steel} setValue={setSteel} />
-      <Resource name="Titanium" value={titanium} setValue={setTitanium} />
+      <Resource name="Money" value={money} setValue={handleResourceChange} />
+      <Resource name="Steel" value={steel} setValue={handleResourceChange} />
+      <Resource
+        name="Titanium"
+        value={titanium}
+        setValue={handleResourceChange}
+      />
       <StatusBar style="auto" />
     </View>
   );

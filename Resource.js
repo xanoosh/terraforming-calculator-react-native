@@ -10,13 +10,13 @@ const Resource = ({ name, value, setValue }) => {
     <View style={styles.resource}>
       <Button
         style={styles.button}
-        onPress={() => setValue((prev) => prev + 1)}
+        onPress={() => setValue(name, +1)}
         title="+"
       />
       <Text style={styles.value}>{value}</Text>
       <Button
         style={styles.button}
-        onPress={() => setValue((prev) => prev - 1)}
+        onPress={() => setValue(name, -1)}
         title="-"
       />
       <Text style={styles.name}>{name}</Text>

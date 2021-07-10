@@ -9,34 +9,34 @@ const ResourceExpanded = ({ name, value, setValue }) => {
     <View style={styles.resource}>
       <Button
         style={styles.button}
-        onPress={() => setValue((prev) => prev - 10)}
+        onPress={() => setValue(name, -10)}
         title="-10"
       />
       <Button
         style={styles.button}
-        onPress={() => setValue((prev) => prev - 5)}
+        onPress={() => setValue(name, -5)}
         title="-5"
       />
 
       <Button
         style={styles.button}
-        onPress={() => setValue((prev) => prev - 1)}
+        onPress={() => setValue(name, -1)}
         title="-1"
       />
       <Text style={styles.value}>{value}</Text>
       <Button
         style={styles.button}
-        onPress={() => setValue((prev) => prev + 1)}
+        onPress={() => setValue(name, 1)}
         title="+1"
       />
       <Button
         style={styles.button}
-        onPress={() => setValue((prev) => prev + 5)}
+        onPress={() => setValue(name, 5)}
         title="+5"
       />
       <Button
         style={styles.button}
-        onPress={() => setValue((prev) => prev + 10)}
+        onPress={() => setValue(name, 10)}
         title="+10"
       />
       <Text style={styles.name}>{name}</Text>
