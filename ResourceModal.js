@@ -1,16 +1,14 @@
 // import styles from './styles.js';
-import { StyleSheet, Modal, Pressable, Text, Button, View } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import { StyleSheet, Modal, Pressable, Text, View } from 'react-native';
+import React from 'react';
 import ResourceExpanded from './ResourceExpanded';
 
 const ResourceModal = ({ opened, setOpened, name, value, setValue }) => {
   return (
     <>
-      <Button
-        style={styles.button}
-        onPress={() => setOpened(!opened)}
-        title="more"
-      />
+      <Pressable style={styles.btnMore} onPress={() => setOpened(!opened)}>
+        <Text style={styles.btnMoreTxt}>more...</Text>
+      </Pressable>
       <Modal
         animationType="fade"
         presentationStyle="overFullScreen"
@@ -21,12 +19,10 @@ const ResourceModal = ({ opened, setOpened, name, value, setValue }) => {
         }}
       >
         <View style={styles.centeredView}>
-          <View>
-            <Pressable style={styles.close} onPress={() => setOpened(!opened)}>
-              <Text style={styles.textStyle}>hide</Text>
-            </Pressable>
-            <ResourceExpanded name={name} value={value} setValue={setValue} />
-          </View>
+          <Pressable style={styles.close} onPress={() => setOpened(!opened)}>
+            <Text style={styles.closeContent}>×</Text>
+          </Pressable>
+          <ResourceExpanded name={name} value={value} setValue={setValue} />
         </View>
       </Modal>
     </>
@@ -38,7 +34,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'red',
+    backgroundColor: '#333533',
     width: '100%',
     height: '100%',
     position: 'relative',
@@ -51,13 +47,26 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   name: {
-    color: '#fff',
+    color: '#000',
     fontSize: 20,
   },
   close: {
     position: 'absolute',
-    top: '10%',
-    right: '10%',
+    top: 20,
+    right: 30,
+    zIndex: 20,
+  },
+  closeContent: {
+    color: '#fff',
+    fontSize: 50,
+  },
+  btnMore: {
+    width: '100%',
+  },
+  btnMoreTxt: {
+    width: '100%',
+    color: '#fff',
+    textAlign: 'center',
   },
 });
 

@@ -10,7 +10,10 @@ export default function App() {
   const [money, setMoney] = useState(0);
   const [steel, setSteel] = useState(0);
   const [titanium, setTitanium] = useState(0);
-  const [message, setMessage] = useState('');
+  const [plant, setPlant] = useState(0);
+  const [energy, setEnergy] = useState(0);
+  const [heat, setHeat] = useState(0);
+  // const [message, setMessage] = useState('');
 
   const getData = async (name) => {
     try {
@@ -28,13 +31,16 @@ export default function App() {
       await AsyncStorage.setItem('Titanium', 1 + '');
       const moneyValue = await getData('Money');
       if (moneyValue) setMoney(Number(moneyValue));
-      setMessage((prev) => `${prev} money value: ${moneyValue}`);
       const steelValue = await getData('Steel');
       if (steelValue) setSteel(Number(steelValue));
-      setMessage((prev) => `${prev} steel value: ${steelValue}`);
       const titaniumValue = await getData('Titanium');
       if (titaniumValue) setTitanium(Number(titaniumValue));
-      setMessage((prev) => `${prev} titanium value: ${titaniumValue}`);
+      const plantValue = await getData('Plant');
+      if (plantValue) setPlant(Number(plantValue));
+      const energyValue = await getData('Energy');
+      if (energyValue) setEnergy(Number(energyValue));
+      const heatValue = await getData('Heat');
+      if (heatValue) setHeat(Number(heatValue));
 
       setTitanium(1);
     })();
@@ -44,6 +50,9 @@ export default function App() {
     if (name === 'Money') setMoney((prev) => prev + val);
     if (name === 'Steel') setSteel((prev) => prev + val);
     if (name === 'Titanium') setTitanium((prev) => prev + val);
+    if (name === 'Plant') setPlant((prev) => prev + val);
+    if (name === 'Energy') setEnergy((prev) => prev + val);
+    if (name === 'Heat') setHeat((prev) => prev + val);
     //save resource changes in asyncstorage
     (async () => {
       await AsyncStorage.setItem(name, val + '');
@@ -59,7 +68,10 @@ export default function App() {
         value={titanium}
         setValue={handleResourceChange}
       />
-      <Text style={{ fontSize: 21 }}>{message}</Text>
+      <Resource name="Plant" value={plant} setValue={handleResourceChange} />
+      <Resource name="Energy" value={energy} setValue={handleResourceChange} />
+      <Resource name="Heat" value={heat} setValue={handleResourceChange} />
+      {/* <Text style={{ fontSize: 21 }}>{message}</Text> */}
       <StatusBar style="auto" />
     </View>
   );
@@ -68,12 +80,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#333533',
     alignItems: 'center',
     justifyContent: 'center',
   },
   button: {
-    // backgroundColor: '#fff',
     marginTop: 20,
     padding: 10,
   },

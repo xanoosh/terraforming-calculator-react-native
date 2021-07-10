@@ -8,46 +8,52 @@ const Resource = ({ name, value, setValue }) => {
   const [opened, setOpened] = useState(false);
   return (
     <View style={styles.resource}>
-      <Button
-        style={styles.button}
-        onPress={() => setValue(name, -1)}
-        title="-"
-      />
-      <Text style={styles.value}>{value}</Text>
-      <Button
-        style={styles.button}
-        onPress={() => setValue(name, 1)}
-        title="+"
-      />
-      <Text style={styles.name}>{name}</Text>
-      <ResourceModal
-        opened={opened}
-        setOpened={setOpened}
-        name={name}
-        value={value}
-        setValue={setValue}
-      />
+      <View style={styles.col}>
+        <Button
+          style={styles.button}
+          onPress={() => setValue(name, -1)}
+          title="-"
+        />
+        <Text style={styles.value}>{value}</Text>
+        <Button
+          style={styles.button}
+          onPress={() => setValue(name, 1)}
+          title="+"
+        />
+      </View>
+
+      <View style={styles.col}>
+        <Text style={styles.name}>{name}</Text>
+      </View>
+      <View style={styles.col}>
+        <ResourceModal
+          opened={opened}
+          setOpened={setOpened}
+          name={name}
+          value={value}
+          setValue={setValue}
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   resource: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    // justifyContent: 'space-round',
-    backgroundColor: '#333533',
-    width: '90%',
+    justifyContent: 'space-between',
+    width: '100%',
+    padding: 10,
     color: '#fff',
     marginTop: 20,
     padding: 10,
+  },
+  col: {
+    width: '30%',
+    flex: 1,
+    flexDirection: 'row',
   },
   value: {
     color: '#fff',
@@ -59,6 +65,8 @@ const styles = StyleSheet.create({
   name: {
     color: '#fff',
     fontSize: 20,
+    textAlign: 'center',
+    width: '100%',
   },
   button: {
     // backgroundColor: '#fff',
