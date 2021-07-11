@@ -263,7 +263,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  resetBtn: {},
+  resetBtn: {
+    height: '100%',
+    width: '30%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   resetBtnTxt: {
     width: '100%',
     color: '#fff',
@@ -286,7 +292,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 20,
+    marginBottom: 35,
   },
   descriptitonTxt: {
     color: '#fff',
