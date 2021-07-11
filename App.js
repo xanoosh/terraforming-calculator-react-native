@@ -120,6 +120,26 @@ export default function App() {
     }
   };
 
+  const handleReset = () => {
+    const resourcesArray = [
+      'Money',
+      'MoneyProd',
+      'Steel',
+      'SteelProd',
+      'Titanium',
+      'TitaniumProd',
+      'Plant',
+      'PlantProd',
+      'Energy',
+      'EnergyProd',
+      'Heat',
+      'HeatProd',
+    ];
+    resourcesArray.forEach((resource) => {
+      saveResource(resource, 0);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Resource
