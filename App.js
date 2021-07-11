@@ -154,38 +154,49 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.descriptiton}>
+        <Text style={styles.descriptitonTxt}>Quantity</Text>
+        <Text style={styles.descriptitonTxt}>Name</Text>
+        <Text style={styles.descriptitonTxt}>Production</Text>
+      </View>
       <Resource
         name="Money"
+        productionName="MoneyProd"
         value={money}
         production={moneyProd}
         setter={handleResourceChange}
       />
       <Resource
         name="Steel"
+        productionName="SteelProd"
         value={steel}
         production={steelProd}
         setter={handleResourceChange}
       />
       <Resource
         name="Titanium"
+        productionName="TitaniumProd"
         value={titanium}
         production={titaniumProd}
         setter={handleResourceChange}
       />
       <Resource
         name="Plant"
+        productionName="PlantProd"
         value={plant}
         production={plantProd}
         setter={handleResourceChange}
       />
       <Resource
         name="Energy"
+        productionName="EnergyProd"
         value={energy}
         production={energyProd}
         setter={handleResourceChange}
       />
       <Resource
         name="Heat"
+        productionName="HeatProd"
         value={heat}
         production={heatProd}
         setter={handleResourceChange}
@@ -207,6 +218,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#333533',
     alignItems: 'center',
     justifyContent: 'center',
+    position: 'relative',
+    width: '100%',
   },
   button: {
     marginTop: 20,
@@ -221,5 +234,18 @@ const styles = StyleSheet.create({
     width: '100%',
     color: '#fff',
     textAlign: 'center',
+  },
+  descriptiton: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  descriptitonTxt: {
+    color: '#fff',
+    width: '33.333%',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    fontSize: 13,
   },
 });

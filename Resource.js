@@ -3,47 +3,29 @@ import { StyleSheet, Text, Button, View } from 'react-native';
 import React, { useState } from 'react';
 
 import ResourceModal from './ResourceModal';
+import SingleResourceCell from './SingleResourceCell';
 
-const Resource = ({ name, value, production, setter }) => {
-  const [opened, setOpened] = useState(false);
-
-  //gotta find an optimal layout for single resource
-
-  //example:
-
-  // count | name | production
-  //expand |      | expand
-
-  //count => btn- | value | btn+
-
+const Resource = ({ name, value, production, productionName, setter }) => {
   return (
-    <View style={styles.resource}>
-      <View style={styles.col}>
-        <Button
-          style={styles.button}
-          onPress={() => setter(name, -1)}
-          title="-"
-        />
-        <Text style={styles.value}>{value}</Text>
-        <Button
-          style={styles.button}
-          onPress={() => setter(name, 1)}
-          title="+"
-        />
+    <>
+      <View style={styles.resource}>
+        <View style={styles.col}>
+          <SingleResourceCell name={name} value={value} setter={setter} />
+        </View>
+        <View style={styles.col}>
+          <Text style={styles.name}>{name}</Text>
+        </View>
+        <View style={styles.col}>
+          <View style={styles.col}>
+            <SingleResourceCell
+              name={productionName}
+              value={production}
+              setter={setter}
+            />
+          </View>
+        </View>
       </View>
-      <View style={styles.col}>
-        <Text style={styles.name}>{name}</Text>
-      </View>
-      <View style={styles.col}>
-        <ResourceModal
-          opened={opened}
-          setOpened={setOpened}
-          name={name}
-          value={value}
-          setter={setter}
-        />
-      </View>
-    </View>
+    </>
   );
 };
 
@@ -53,33 +35,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '100%',
+    width: '95%',
     padding: 10,
     color: '#fff',
-    marginTop: 20,
-    padding: 10,
+    marginTop: 15,
+  },
+  expand: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '90%',
   },
   col: {
     width: '30%',
     flex: 1,
     flexDirection: 'row',
   },
-  value: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 22,
-    minWidth: '15%',
-    textAlign: 'center',
-  },
   name: {
     color: '#fff',
     fontSize: 20,
     textAlign: 'center',
     width: '100%',
-  },
-  button: {
-    marginTop: 20,
-    padding: 10,
   },
 });
 
