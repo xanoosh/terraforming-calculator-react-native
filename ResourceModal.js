@@ -7,7 +7,7 @@ const ResourceModal = ({ opened, setOpened, name, value, setter }) => {
   return (
     <>
       <Pressable style={styles.btnMore} onPress={() => setOpened(!opened)}>
-        <Text style={styles.btnMoreTxt}>more...</Text>
+        <Text style={styles.btnMoreTxt}>expand</Text>
       </Pressable>
       <Modal
         animationType="fade"

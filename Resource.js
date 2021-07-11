@@ -6,6 +6,16 @@ import ResourceModal from './ResourceModal';
 
 const Resource = ({ name, value, production, setter }) => {
   const [opened, setOpened] = useState(false);
+
+  //gotta find an optimal layout for single resource
+
+  //example:
+
+  // count | name | production
+  //expand |      | expand
+
+  //count => btn- | value | btn+
+
   return (
     <View style={styles.resource}>
       <View style={styles.col}>
@@ -21,7 +31,6 @@ const Resource = ({ name, value, production, setter }) => {
           title="+"
         />
       </View>
-
       <View style={styles.col}>
         <Text style={styles.name}>{name}</Text>
       </View>
@@ -69,7 +78,6 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   button: {
-    // backgroundColor: '#fff',
     marginTop: 20,
     padding: 10,
   },
