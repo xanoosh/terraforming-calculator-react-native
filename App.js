@@ -151,7 +151,7 @@ export default function App() {
     setHeat(0);
     setHeatProd(0);
   };
-
+  const handleAdvanceGeneration = () => {};
   return (
     <View style={styles.container}>
       <View style={styles.descriptiton}>
@@ -220,9 +220,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'relative',
     width: '100%',
-  },
-  button: {
-    marginTop: 20,
     padding: 10,
   },
   resetBtn: {
@@ -239,6 +236,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
+    marginBottom: 20,
   },
   descriptitonTxt: {
     color: '#fff',
