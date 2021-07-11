@@ -2,10 +2,10 @@
 import { StyleSheet, Text, Pressable, View } from 'react-native';
 import React from 'react';
 
-const ResourceExpanded = ({ name, value, setter }) => {
+const ResourceExpanded = ({ name, title, value, setter }) => {
   return (
     <View style={styles.resource}>
-      <Text style={styles.name}>{name}</Text>
+      <Text style={styles.name}>{title}</Text>
       <View style={styles.btnGroup}>
         <Pressable style={styles.btn} onPress={() => setter(name, -10)}>
           <Text style={styles.btnTxt}>-10</Text>

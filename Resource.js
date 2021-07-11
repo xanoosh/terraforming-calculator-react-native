@@ -39,12 +39,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginTop: 5,
   },
-  expand: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '90%',
-  },
   col: {
     width: '33%',
     flex: 1,
