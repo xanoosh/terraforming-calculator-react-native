@@ -3,7 +3,7 @@ import { StyleSheet, Modal, Pressable, Text, View } from 'react-native';
 import React from 'react';
 import ResourceExpanded from './ResourceExpanded';
 
-const ResourceModal = ({ opened, setOpened, name, value, setValue }) => {
+const ResourceModal = ({ opened, setOpened, name, value, setter }) => {
   return (
     <>
       <Pressable style={styles.btnMore} onPress={() => setOpened(!opened)}>
@@ -22,7 +22,7 @@ const ResourceModal = ({ opened, setOpened, name, value, setValue }) => {
           <Pressable style={styles.close} onPress={() => setOpened(!opened)}>
             <Text style={styles.closeContent}>×</Text>
           </Pressable>
-          <ResourceExpanded name={name} value={value} setValue={setValue} />
+          <ResourceExpanded name={name} value={value} setter={setter} />
         </View>
       </Modal>
     </>

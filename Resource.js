@@ -4,20 +4,20 @@ import React, { useState } from 'react';
 
 import ResourceModal from './ResourceModal';
 
-const Resource = ({ name, value, setValue }) => {
+const Resource = ({ name, value, production, setter }) => {
   const [opened, setOpened] = useState(false);
   return (
     <View style={styles.resource}>
       <View style={styles.col}>
         <Button
           style={styles.button}
-          onPress={() => setValue(name, -1)}
+          onPress={() => setter(name, -1)}
           title="-"
         />
         <Text style={styles.value}>{value}</Text>
         <Button
           style={styles.button}
-          onPress={() => setValue(name, 1)}
+          onPress={() => setter(name, 1)}
           title="+"
         />
       </View>
@@ -31,7 +31,7 @@ const Resource = ({ name, value, setValue }) => {
           setOpened={setOpened}
           name={name}
           value={value}
-          setValue={setValue}
+          setter={setter}
         />
       </View>
     </View>

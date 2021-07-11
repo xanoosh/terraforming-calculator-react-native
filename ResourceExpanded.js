@@ -2,30 +2,30 @@
 import { StyleSheet, Text, Pressable, View } from 'react-native';
 import React from 'react';
 
-const ResourceExpanded = ({ name, value, setValue }) => {
+const ResourceExpanded = ({ name, value, setter }) => {
   return (
     <View style={styles.resource}>
       <Text style={styles.name}>{name}</Text>
       <View style={styles.btnGroup}>
-        <Pressable style={styles.btn} onPress={() => setValue(name, -10)}>
+        <Pressable style={styles.btn} onPress={() => setter(name, -10)}>
           <Text style={styles.btnTxt}>-10</Text>
         </Pressable>
-        <Pressable style={styles.btn} onPress={() => setValue(name, -5)}>
+        <Pressable style={styles.btn} onPress={() => setter(name, -5)}>
           <Text style={styles.btnTxt}>-5</Text>
         </Pressable>
-        <Pressable style={styles.btn} onPress={() => setValue(name, -1)}>
+        <Pressable style={styles.btn} onPress={() => setter(name, -1)}>
           <Text style={styles.btnTxt}>-1</Text>
         </Pressable>
       </View>
       <Text style={styles.value}>{value}</Text>
       <View style={styles.btnGroup}>
-        <Pressable style={styles.btn} onPress={() => setValue(name, 1)}>
+        <Pressable style={styles.btn} onPress={() => setter(name, 1)}>
           <Text style={styles.btnTxt}>+1</Text>
         </Pressable>
-        <Pressable style={styles.btn} onPress={() => setValue(name, 5)}>
+        <Pressable style={styles.btn} onPress={() => setter(name, 5)}>
           <Text style={styles.btnTxt}>+5</Text>
         </Pressable>
-        <Pressable style={styles.btn} onPress={() => setValue(name, 10)}>
+        <Pressable style={styles.btn} onPress={() => setter(name, 10)}>
           <Text style={styles.btnTxt}>+10</Text>
         </Pressable>
       </View>

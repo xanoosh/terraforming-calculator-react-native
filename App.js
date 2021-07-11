@@ -7,14 +7,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Resource from './Resource.js';
 
 export default function App() {
+  //hooks with resource values and production level
   const [money, setMoney] = useState(0);
+  const [moneyProd, setMoneyProd] = useState(0);
   const [steel, setSteel] = useState(0);
+  const [steelProd, setSteelProd] = useState(0);
   const [titanium, setTitanium] = useState(0);
+  const [titaniumProd, setTitaniumProd] = useState(0);
   const [plant, setPlant] = useState(0);
+  const [plantProd, setPlantProd] = useState(0);
   const [energy, setEnergy] = useState(0);
+  const [energyProd, setEnergyProd] = useState(0);
   const [heat, setHeat] = useState(0);
-  // const [message, setMessage] = useState('');
+  const [heatProd, setHeatProd] = useState(0);
 
+  //get AsyncStorage data or return false
   const getData = async (name) => {
     try {
       const value = await AsyncStorage.getItem(name);
@@ -25,21 +32,33 @@ export default function App() {
     }
   };
 
-  //get stored data on app load
+  //get stored data on load
   useEffect(() => {
     (async () => {
       const moneyValue = await getData('Money');
       if (moneyValue) setMoney(Number(moneyValue));
+      const moneyProd = await getData('MoneyProd');
+      if (moneyProd) setMoneyProd(Number(moneyProd));
       const steelValue = await getData('Steel');
       if (steelValue) setSteel(Number(steelValue));
+      const steelProd = await getData('SteelProd');
+      if (steelProd) setSteelProd(Number(steelProd));
       const titaniumValue = await getData('Titanium');
       if (titaniumValue) setTitanium(Number(titaniumValue));
+      const titaniumProd = await getData('TitaniumProd');
+      if (titaniumProd) setTitaniumProd(Number(titaniumProd));
       const plantValue = await getData('Plant');
       if (plantValue) setPlant(Number(plantValue));
+      const plantProd = await getData('PlantProd');
+      if (plantProd) setPlantProd(Number(plantProd));
       const energyValue = await getData('Energy');
       if (energyValue) setEnergy(Number(energyValue));
+      const energyProd = await getData('EnergyProd');
+      if (energyProd) setEnergyProd(Number(energyProd));
       const heatValue = await getData('Heat');
       if (heatValue) setHeat(Number(heatValue));
+      const heatProd = await getData('HeatProd');
+      if (heatProd) setHeatProd(Number(heatProd));
     })();
   }, []);
 
@@ -55,40 +74,91 @@ export default function App() {
       saveResource(name, money + val);
       setMoney((prev) => prev + val);
     }
+    if (name === 'MoneyProd') {
+      saveResource(name, moneyProd + val);
+      setMoneyProd((prev) => prev + val);
+    }
     if (name === 'Steel') {
       saveResource(name, steel + val);
       setSteel((prev) => prev + val);
+    }
+    if (name === 'SteelProd') {
+      saveResource(name, steelProd + val);
+      setSteelProd((prev) => prev + val);
     }
     if (name === 'Titanium') {
       saveResource(name, titanium + val);
       setTitanium((prev) => prev + val);
     }
+    if (name === 'TitaniumProd') {
+      saveResource(name, titaniumProd + val);
+      setTitaniumProd((prev) => prev + val);
+    }
     if (name === 'Plant') {
       saveResource(name, plant + val);
       setPlant((prev) => prev + val);
+    }
+    if (name === 'PlantProd') {
+      saveResource(name, plantProd + val);
+      setPlantProd((prev) => prev + val);
     }
     if (name === 'Energy') {
       saveResource(name, energy + val);
       setEnergy((prev) => prev + val);
     }
+    if (name === 'EnergyProd') {
+      saveResource(name, energyProd + val);
+      setEnergyProd((prev) => prev + val);
+    }
     if (name === 'Heat') {
       saveResource(name, heat + val);
       setHeat((prev) => prev + val);
+    }
+    if (name === 'HeatProd') {
+      saveResource(name, heatProd + val);
+      setHeatProd((prev) => prev + val);
     }
   };
 
   return (
     <View style={styles.container}>
-      <Resource name="Money" value={money} setValue={handleResourceChange} />
-      <Resource name="Steel" value={steel} setValue={handleResourceChange} />
+      <Resource
+        name="Money"
+        value={money}
+        production={moneyProd}
+        setter={handleResourceChange}
+      />
+      <Resource
+        name="Steel"
+        value={steel}
+        production={steelProd}
+        setter={handleResourceChange}
+      />
       <Resource
         name="Titanium"
         value={titanium}
-        setValue={handleResourceChange}
+        production={titaniumProd}
+        setter={handleResourceChange}
       />
-      <Resource name="Plant" value={plant} setValue={handleResourceChange} />
-      <Resource name="Energy" value={energy} setValue={handleResourceChange} />
-      <Resource name="Heat" value={heat} setValue={handleResourceChange} />
+      <Resource
+        name="Plant"
+        value={plant}
+        production={plantProd}
+        setter={handleResourceChange}
+      />
+      <Resource
+        name="Energy"
+        value={energy}
+        production={energyProd}
+        setter={handleResourceChange}
+      />
+      <Resource
+        name="Heat"
+        value={heat}
+        production={heatProd}
+        setter={handleResourceChange}
+      />
+
       {/* <Text style={{ fontSize: 21, color: '#fff' }}>{message}</Text> */}
       <StatusBar style="auto" />
     </View>
