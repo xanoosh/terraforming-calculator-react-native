@@ -6,7 +6,10 @@ import ResourceModal from './ResourceModal';
 
 const SingleResourceCell = ({ name, value, setter }) => {
   const [opened, setOpened] = useState(false);
-
+  const setName = () => {
+    if (name.includes('Prod')) return `${name.slice(0, -4)} \nProduction`;
+    return name;
+  };
   return (
     <View style={styles.cell}>
       <View style={styles.row}>
@@ -26,7 +29,7 @@ const SingleResourceCell = ({ name, value, setter }) => {
         <ResourceModal
           opened={opened}
           setOpened={setOpened}
-          name={name}
+          name={setName()}
           value={value}
           setter={setter}
         />
