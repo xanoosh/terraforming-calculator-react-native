@@ -1,8 +1,7 @@
 // import styles from './styles.js';
-import { StyleSheet, Text, Button, View } from 'react-native';
-import React, { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 
-import ResourceModal from './ResourceModal';
 import SingleResourceCell from './SingleResourceCell';
 
 const Resource = ({ name, value, production, productionName, setter }) => {
@@ -35,10 +34,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '95%',
+    width: '100%',
     padding: 10,
     color: '#fff',
-    marginTop: 15,
+    marginTop: 5,
   },
   expand: {
     display: 'flex',
@@ -47,9 +46,10 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   col: {
-    width: '30%',
+    width: '33%',
     flex: 1,
     flexDirection: 'row',
+    textAlign: 'center',
   },
   name: {
     color: '#fff',

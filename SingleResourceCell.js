@@ -43,18 +43,20 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
   },
   row: {
     display: 'flex',
     flexDirection: 'row',
     width: '100%',
     textAlign: 'center',
+    justifyContent: 'center',
   },
   value: {
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 22,
-    minWidth: '15%',
+    minWidth: '40%',
     textAlign: 'center',
   },
 });

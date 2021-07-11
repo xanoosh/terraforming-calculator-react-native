@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
   },
   btnMore: {
     width: '100%',
+    marginTop: 5,
   },
   btnMoreTxt: {
     width: '100%',
