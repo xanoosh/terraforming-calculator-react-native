@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, Button, View } from 'react-native';
+import { StyleSheet, Text, Button, View, Pressable } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 //style & components
 // import styles from './styles.js';
@@ -138,6 +138,18 @@ export default function App() {
     resourcesArray.forEach((resource) => {
       saveResource(resource, 0);
     });
+    setMoney(0);
+    setMoneyProd(0);
+    setSteel(0);
+    setSteelProd(0);
+    setTitanium(0);
+    setTitaniumProd(0);
+    setPlant(0);
+    setPlantProd(0);
+    setEnergy(0);
+    setEnergyProd(0);
+    setHeat(0);
+    setHeatProd(0);
   };
 
   return (
@@ -179,6 +191,10 @@ export default function App() {
         setter={handleResourceChange}
       />
 
+      <Pressable style={styles.resetBtn} onPress={() => handleReset()}>
+        <Text style={styles.resetBtnTxt}>Reset</Text>
+      </Pressable>
+
       {/* <Text style={{ fontSize: 21, color: '#fff' }}>{message}</Text> */}
       <StatusBar style="auto" />
     </View>
@@ -195,5 +211,15 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20,
     padding: 10,
+  },
+  resetBtn: {
+    width: '100%',
+    position: 'absolute',
+    top: '10%',
+  },
+  resetBtnTxt: {
+    width: '100%',
+    color: '#fff',
+    textAlign: 'center',
   },
 });
