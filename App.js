@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, Button, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 //style & components
 // import styles from './styles.js';
 import Resource from './Resource.js';
+import TerraformingPoints from './TerraformingPoints.js';
 
 export default function App() {
   //hooks with resource values and production level
@@ -20,6 +21,7 @@ export default function App() {
   const [energyProd, setEnergyProd] = useState(0);
   const [heat, setHeat] = useState(0);
   const [heatProd, setHeatProd] = useState(0);
+  const [terraformingPoints, setTerraformingPoints] = useState(20);
 
   //get AsyncStorage data or return false
   const getData = async (name) => {
@@ -59,6 +61,8 @@ export default function App() {
       if (heatValue) setHeat(Number(heatValue));
       const heatProd = await getData('HeatProd');
       if (heatProd) setHeatProd(Number(heatProd));
+      const terraformingPoints = await getData('TerraformingPoints');
+      if (terraformingPoints) setTerraformingPoints(Number(terraformingPoints));
     })();
   }, []);
 
@@ -118,6 +122,10 @@ export default function App() {
       saveResource(name, heatProd + val);
       setHeatProd((prev) => prev + val);
     }
+    if (name === 'TerraformingPoints') {
+      saveResource(name, terraformingPoints + val);
+      setTerraformingPoints((prev) => prev + val);
+    }
   };
 
   const handleReset = () => {
@@ -150,10 +158,31 @@ export default function App() {
     setEnergyProd(0);
     setHeat(0);
     setHeatProd(0);
+    saveResource('TerraformingPoints', 20);
+    setTerraformingPoints(20);
   };
-  const handleAdvanceGeneration = () => {};
+  const handleAdvanceGeneration = () => {
+    handleResourceChange('Money', moneyProd + terraformingPoints);
+    handleResourceChange('Steel', steelProd);
+    handleResourceChange('Titanium', titaniumProd);
+    handleResourceChange('Plant', plantProd);
+    handleResourceChange('Heat', energy + heatProd);
+    setEnergy(0);
+    saveResource('Energy', 0);
+    handleResourceChange('Energy', energyProd);
+  };
   return (
     <View style={styles.container}>
+      <View style={styles.viewTop}>
+        <Pressable style={styles.resetBtn} onPress={() => handleReset()}>
+          <Text style={styles.resetBtnTxt}>Reset</Text>
+        </Pressable>
+        <TerraformingPoints
+          name="TerraformingPoints"
+          value={terraformingPoints}
+          setter={handleResourceChange}
+        />
+      </View>
       <View style={styles.descriptiton}>
         <Text style={styles.descriptitonTxt}>Quantity</Text>
         <Text style={styles.descriptitonTxt}>Name</Text>
@@ -202,8 +231,11 @@ export default function App() {
         setter={handleResourceChange}
       />
 
-      <Pressable style={styles.resetBtn} onPress={() => handleReset()}>
-        <Text style={styles.resetBtnTxt}>Reset</Text>
+      <Pressable
+        style={styles.advanceBtn}
+        onPress={() => handleAdvanceGeneration()}
+      >
+        <Text style={styles.advanceBtnTxt}>Advance Generation</Text>
       </Pressable>
 
       {/* <Text style={{ fontSize: 21, color: '#fff' }}>{message}</Text> */}
@@ -222,15 +254,33 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 10,
   },
-  resetBtn: {
-    width: '100%',
+  viewTop: {
     position: 'absolute',
-    top: '10%',
+    top: '5%',
+    width: '100%',
+    padding: 5,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
+  resetBtn: {},
   resetBtnTxt: {
     width: '100%',
     color: '#fff',
     textAlign: 'center',
+  },
+  advanceBtn: {
+    width: '50%',
+    position: 'absolute',
+    bottom: '10%',
+    backgroundColor: '#4695ec',
+    padding: 9,
+  },
+  advanceBtnTxt: {
+    width: '100%',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16,
   },
   descriptiton: {
     width: '100%',

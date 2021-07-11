@@ -45,15 +45,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     textAlign: 'center',
   },
-  // colTop: {
-  //   width: '33.33333333%',
-  //   flex: 1,
-  //   flexDirection: 'row',
-  //   alignItems: 'flex-end',
-  //   justifyContent: 'flex-start',
-  //   textAlign: 'center',
-  //   backgroundColor: 'red',
-  // },
   name: {
     color: '#fff',
     fontSize: 20,
