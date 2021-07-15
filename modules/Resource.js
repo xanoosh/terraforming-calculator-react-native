@@ -1,5 +1,5 @@
-// import styles from './styles.js';
-import { StyleSheet, Text, View } from 'react-native';
+import styles from '../style/styles.js';
+import { Text, View } from 'react-native';
 import React from 'react';
 
 import SingleResourceCell from './SingleResourceCell';
@@ -27,30 +27,5 @@ const Resource = ({ name, value, production, productionName, setter }) => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  resource: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    width: '100%',
-    // padding: 10,
-    color: '#fff',
-    marginBottom: 15,
-  },
-  col: {
-    width: '33.33333333%',
-    flex: 1,
-    flexDirection: 'row',
-    textAlign: 'center',
-  },
-  name: {
-    color: '#fff',
-    fontSize: 20,
-    textAlign: 'center',
-    width: '100%',
-  },
-});
 
 export default Resource;

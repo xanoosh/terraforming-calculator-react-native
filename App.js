@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { Text, View, Pressable } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 //style & components
-// import styles from './styles.js';
+import styles from './style/styles.js';
 import Resource from './modules/Resource.js';
 import TerraformingPoints from './modules/TerraformingPoints.js';
 
@@ -243,63 +243,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#333533',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    width: '100%',
-    padding: 10,
-  },
-  viewTop: {
-    position: 'absolute',
-    top: '5%',
-    width: '100%',
-    padding: 5,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  resetBtn: {
-    height: '100%',
-    width: '30%',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  resetBtnTxt: {
-    width: '100%',
-    color: '#fff',
-    textAlign: 'center',
-  },
-  advanceBtn: {
-    width: '50%',
-    position: 'absolute',
-    bottom: '10%',
-    backgroundColor: '#4695ec',
-    padding: 9,
-  },
-  advanceBtnTxt: {
-    width: '100%',
-    color: '#fff',
-    textAlign: 'center',
-    fontSize: 16,
-  },
-  descriptiton: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 35,
-  },
-  descriptitonTxt: {
-    color: '#fff',
-    width: '33.333%',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    fontSize: 13,
-  },
-});
