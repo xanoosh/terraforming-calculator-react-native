@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, Pressable } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 //style & components
-import styles from './style/styles.js';
+import { mainStyles } from './style/styles.js';
+// import styles from './style/styles.js';
 import Resource from './modules/Resource.js';
 import TerraformingPoints from './modules/TerraformingPoints.js';
 
@@ -172,10 +173,10 @@ export default function App() {
     handleResourceChange('Energy', energyProd);
   };
   return (
-    <View style={styles.container}>
-      <View style={styles.viewTop}>
-        <Pressable style={styles.resetBtn} onPress={() => handleReset()}>
-          <Text style={styles.resetBtnTxt}>Reset</Text>
+    <View style={mainStyles.container}>
+      <View style={mainStyles.viewTop}>
+        <Pressable style={mainStyles.resetBtn} onPress={() => handleReset()}>
+          <Text style={mainStyles.resetBtnTxt}>Reset</Text>
         </Pressable>
         <TerraformingPoints
           name="TerraformingPoints"
@@ -183,10 +184,10 @@ export default function App() {
           setter={handleResourceChange}
         />
       </View>
-      <View style={styles.descriptiton}>
-        <Text style={styles.descriptitonTxt}>Quantity</Text>
-        <Text style={styles.descriptitonTxt}>Name</Text>
-        <Text style={styles.descriptitonTxt}>Production</Text>
+      <View style={mainStyles.descriptiton}>
+        <Text style={mainStyles.descriptitonTxt}>Quantity</Text>
+        <Text style={mainStyles.descriptitonTxt}>Name</Text>
+        <Text style={mainStyles.descriptitonTxt}>Production</Text>
       </View>
       <Resource
         name="Money"
@@ -232,10 +233,10 @@ export default function App() {
       />
 
       <Pressable
-        style={styles.advanceBtn}
+        style={mainStyles.advanceBtn}
         onPress={() => handleAdvanceGeneration()}
       >
-        <Text style={styles.advanceBtnTxt}>Advance Generation</Text>
+        <Text style={mainStyles.advanceBtnTxt}>Advance Generation</Text>
       </Pressable>
 
       {/* <Text style={{ fontSize: 21, color: '#fff' }}>{message}</Text> */}

@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+//main
+const mainStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#333533',
@@ -58,7 +59,10 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontSize: 13,
   },
-  //resource component
+});
+
+//resource component
+const resourceStyles = StyleSheet.create({
   resource: {
     display: 'flex',
     flexDirection: 'row',
@@ -81,7 +85,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '100%',
   },
-  //resource expanded component
+});
+
+//resource expanded component
+const resourceExpandedStyles = StyleSheet.create({
   resourceExpanded: {
     display: 'flex',
     alignItems: 'center',
@@ -123,7 +130,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
   },
-  //resource modal component
 });
 
-export default styles;
+export { mainStyles, resourceStyles, resourceExpandedStyles };
