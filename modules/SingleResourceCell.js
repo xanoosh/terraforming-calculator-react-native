@@ -1,5 +1,5 @@
-// import styles from './styles.js';
-import { StyleSheet, Text, Button, View } from 'react-native';
+import { singleResourceCellStyles } from '../style/styles.js';
+import { Text, Button, View } from 'react-native';
 import React, { useState } from 'react';
 
 import ResourceModal from './ResourceModal';
@@ -11,21 +11,21 @@ const SingleResourceCell = ({ name, value, setter }) => {
     return name;
   };
   return (
-    <View style={styles.cell}>
-      <View style={styles.row}>
+    <View style={singleResourceCellStyles.cell}>
+      <View style={singleResourceCellStyles.row}>
         <Button
-          style={styles.button}
+          style={singleResourceCellStyles.button}
           onPress={() => setter(name, -1)}
           title="-"
         />
-        <Text style={styles.value}>{value}</Text>
+        <Text style={singleResourceCellStyles.value}>{value}</Text>
         <Button
-          style={styles.button}
+          style={singleResourceCellStyles.button}
           onPress={() => setter(name, 1)}
           title="+"
         />
       </View>
-      <View style={styles.row}>
+      <View style={singleResourceCellStyles.row}>
         <ResourceModal
           opened={opened}
           setOpened={setOpened}
@@ -38,28 +38,5 @@ const SingleResourceCell = ({ name, value, setter }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  cell: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-  },
-  row: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '100%',
-    textAlign: 'center',
-    justifyContent: 'center',
-  },
-  value: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 22,
-    minWidth: '40%',
-    textAlign: 'center',
-  },
-});
 
 export default SingleResourceCell;

@@ -132,4 +132,107 @@ const resourceExpandedStyles = StyleSheet.create({
   },
 });
 
-export { mainStyles, resourceStyles, resourceExpandedStyles };
+//resource modal component
+const resourceModalStyles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#333533',
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+  },
+  value: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 22,
+    minWidth: '15%',
+    textAlign: 'center',
+  },
+  name: {
+    color: '#000',
+    fontSize: 20,
+  },
+  close: {
+    position: 'absolute',
+    top: 20,
+    right: 30,
+    zIndex: 20,
+  },
+  closeContent: {
+    color: '#fff',
+    fontSize: 50,
+  },
+  btnMore: {
+    width: '100%',
+    marginTop: 5,
+  },
+  btnMoreTxt: {
+    width: '100%',
+    color: '#fff',
+    textAlign: 'center',
+  },
+});
+
+//single resource cell component
+const singleResourceCellStyles = StyleSheet.create({
+  cell: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  },
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    textAlign: 'center',
+    justifyContent: 'center',
+  },
+  value: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 22,
+    minWidth: '40%',
+    textAlign: 'center',
+  },
+});
+
+const terraformingPointsStyles = StyleSheet.create({
+  cell: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '33.33%',
+  },
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    textAlign: 'center',
+    justifyContent: 'center',
+  },
+  name: {
+    textAlign: 'center',
+    fontSize: 20,
+    color: '#fff',
+    paddingBottom: 5,
+  },
+  value: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 22,
+    minWidth: '40%',
+    textAlign: 'center',
+  },
+});
+
+export {
+  mainStyles,
+  resourceStyles,
+  resourceExpandedStyles,
+  resourceModalStyles,
+  singleResourceCellStyles,
+  terraformingPointsStyles,
+};
