@@ -4,8 +4,8 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 //style & components
 // import styles from './styles.js';
-import Resource from './Resource.js';
-import TerraformingPoints from './TerraformingPoints.js';
+import Resource from './modules/Resource.js';
+import TerraformingPoints from './modules/TerraformingPoints.js';
 
 export default function App() {
   //hooks with resource values and production level
