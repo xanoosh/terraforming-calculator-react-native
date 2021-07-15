@@ -9,9 +9,9 @@ const ResourceExpanded = ({ name, title, value, setter }) => {
       <View style={resourceExpandedStyles.btnGroupExpanded}>
         <Pressable
           style={resourceExpandedStyles.btnExpanded}
-          onPress={() => setter(name, -10)}
+          onPress={() => setter(name, -1)}
         >
-          <Text style={resourceExpandedStyles.btnTxtExpanded}>-10</Text>
+          <Text style={resourceExpandedStyles.btnTxtExpanded}>-1</Text>
         </Pressable>
         <Pressable
           style={resourceExpandedStyles.btnExpanded}
@@ -21,9 +21,9 @@ const ResourceExpanded = ({ name, title, value, setter }) => {
         </Pressable>
         <Pressable
           style={resourceExpandedStyles.btnExpanded}
-          onPress={() => setter(name, -1)}
+          onPress={() => setter(name, -10)}
         >
-          <Text style={resourceExpandedStyles.btnTxtExpanded}>-1</Text>
+          <Text style={resourceExpandedStyles.btnTxtExpanded}>-10</Text>
         </Pressable>
       </View>
       <Text style={resourceExpandedStyles.valueExpanded}>{value}</Text>
