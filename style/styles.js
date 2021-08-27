@@ -44,6 +44,7 @@ const mainStyles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontSize: 16,
+    fontWeight: 'bold',
   },
   descriptiton: {
     width: '100%',
@@ -189,12 +190,27 @@ const singleResourceCellStyles = StyleSheet.create({
     width: '100%',
     textAlign: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   value: {
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 22,
     minWidth: '40%',
+    textAlign: 'center',
+  },
+  button: {
+    width: 25,
+    height: 25,
+    backgroundColor: '#4695ec',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: 'bold',
     textAlign: 'center',
   },
 });
@@ -212,6 +228,7 @@ const terraformingPointsStyles = StyleSheet.create({
     width: '100%',
     textAlign: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   name: {
     textAlign: 'center',
@@ -222,8 +239,22 @@ const terraformingPointsStyles = StyleSheet.create({
   value: {
     color: '#fff',
     fontWeight: 'bold',
-    fontSize: 22,
+    fontSize: 25,
     minWidth: '40%',
+    textAlign: 'center',
+  },
+  button: {
+    width: 25,
+    height: 25,
+    backgroundColor: '#4695ec',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: 'bold',
     textAlign: 'center',
   },
 });

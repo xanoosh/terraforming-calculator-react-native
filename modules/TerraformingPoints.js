@@ -1,5 +1,5 @@
 import { terraformingPointsStyles } from '../style/styles.js';
-import { Text, Button, View } from 'react-native';
+import { Text, Pressable, View } from 'react-native';
 import React from 'react';
 
 const TerraformingPoints = ({ name, value, setter }) => {
@@ -9,17 +9,20 @@ const TerraformingPoints = ({ name, value, setter }) => {
         <Text style={terraformingPointsStyles.name}>Points</Text>
       </View>
       <View style={terraformingPointsStyles.row}>
-        <Button
+        <Pressable
           style={terraformingPointsStyles.button}
           onPress={() => setter(name, -1)}
-          title="-"
-        />
+        >
+          <Text style={terraformingPointsStyles.buttonText}>-1</Text>
+        </Pressable>
         <Text style={terraformingPointsStyles.value}>{value}</Text>
-        <Button
+
+        <Pressable
           style={terraformingPointsStyles.button}
           onPress={() => setter(name, 1)}
-          title="+"
-        />
+        >
+          <Text style={terraformingPointsStyles.buttonText}>1</Text>
+        </Pressable>
       </View>
     </View>
   );

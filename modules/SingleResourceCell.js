@@ -1,5 +1,5 @@
 import { singleResourceCellStyles } from '../style/styles.js';
-import { Text, Button, View } from 'react-native';
+import { Text, Pressable, View } from 'react-native';
 import React, { useState } from 'react';
 
 import ResourceModal from './ResourceModal';
@@ -13,17 +13,21 @@ const SingleResourceCell = ({ name, value, setter }) => {
   return (
     <View style={singleResourceCellStyles.cell}>
       <View style={singleResourceCellStyles.row}>
-        <Button
+        <Pressable
           style={singleResourceCellStyles.button}
           onPress={() => setter(name, -1)}
-          title="-"
-        />
+        >
+          <Text style={singleResourceCellStyles.buttonText}>-1</Text>
+        </Pressable>
+
         <Text style={singleResourceCellStyles.value}>{value}</Text>
-        <Button
+
+        <Pressable
           style={singleResourceCellStyles.button}
           onPress={() => setter(name, 1)}
-          title="+"
-        />
+        >
+          <Text style={singleResourceCellStyles.buttonText}>1</Text>
+        </Pressable>
       </View>
       <View style={singleResourceCellStyles.row}>
         <ResourceModal
