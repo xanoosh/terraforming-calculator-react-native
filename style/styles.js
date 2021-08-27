@@ -26,11 +26,13 @@ const mainStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   resetBtnTxt: {
     width: '100%',
     color: '#fff',
     textAlign: 'center',
+    width: 50,
   },
   advanceBtn: {
     width: '50%',
@@ -167,11 +169,19 @@ const resourceModalStyles = StyleSheet.create({
   },
   btnMore: {
     width: '100%',
-    marginTop: 5,
+    marginTop: 10,
+    display: 'flex',
+    alignItems: 'center',
   },
   btnMoreTxt: {
-    width: '100%',
+    width: 60,
     color: '#fff',
+    fontSize: 12,
+    padding: 3,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#fff',
+    lineHeight: 15,
     textAlign: 'center',
   },
 });
@@ -200,8 +210,8 @@ const singleResourceCellStyles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    width: 25,
-    height: 25,
+    width: 30,
+    height: 30,
     backgroundColor: '#4695ec',
     display: 'flex',
     justifyContent: 'center',
@@ -244,8 +254,8 @@ const terraformingPointsStyles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    width: 25,
-    height: 25,
+    width: 30,
+    height: 30,
     backgroundColor: '#4695ec',
     display: 'flex',
     justifyContent: 'center',
