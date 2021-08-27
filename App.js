@@ -168,9 +168,9 @@ export default function App() {
     handleResourceChange('Titanium', titaniumProd);
     handleResourceChange('Plant', plantProd);
     handleResourceChange('Heat', energy + heatProd);
-    setEnergy(0);
-    saveResource('Energy', 0);
-    handleResourceChange('Energy', energyProd);
+    //edge case: energy on adv gen is always equal to energy production
+    setEnergy(energyProd);
+    saveResource('Energy', energyProd);
   };
   return (
     <View style={mainStyles.container}>
