@@ -13,7 +13,7 @@ const mainStyles = StyleSheet.create({
   },
   viewTop: {
     position: 'absolute',
-    top: '5%',
+    top: '4%',
     width: '100%',
     padding: 5,
     display: 'flex',
@@ -37,7 +37,7 @@ const mainStyles = StyleSheet.create({
   advanceBtn: {
     width: '50%',
     position: 'absolute',
-    bottom: '10%',
+    bottom: '5%',
     backgroundColor: '#4695ec',
     padding: 9,
   },
@@ -52,7 +52,7 @@ const mainStyles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 35,
+    marginBottom: 25,
   },
   descriptitonTxt: {
     color: '#fff',

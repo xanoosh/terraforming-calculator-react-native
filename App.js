@@ -1,12 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { Text, View, Pressable } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-//style & components
-import { mainStyles } from './style/styles.js';
-// import styles from './style/styles.js';
+
 import Resource from './modules/Resource.js';
 import TerraformingPoints from './modules/TerraformingPoints.js';
+import { mainStyles } from './style/styles.js';
+import { getData, saveResource } from './functions/Functions';
 
 export default function App() {
   //hooks with resource values and production level
@@ -23,17 +21,6 @@ export default function App() {
   const [heat, setHeat] = useState(0);
   const [heatProd, setHeatProd] = useState(0);
   const [terraformingPoints, setTerraformingPoints] = useState(20);
-
-  //get AsyncStorage data or return false
-  const getData = async (name) => {
-    try {
-      const value = await AsyncStorage.getItem(name);
-      if (value !== null) return value;
-      else return false;
-    } catch (e) {
-      return false;
-    }
-  };
 
   //get stored data on load
   useEffect(() => {
@@ -66,13 +53,6 @@ export default function App() {
       if (terraformingPoints) setTerraformingPoints(Number(terraformingPoints));
     })();
   }, []);
-
-  //save resource changes in asyncstorage
-  const saveResource = (name, val) => {
-    (async () => {
-      await AsyncStorage.setItem(name, val + '');
-    })();
-  };
 
   const handleResourceChange = (name, val) => {
     if (name === 'Money') {
@@ -238,9 +218,6 @@ export default function App() {
       >
         <Text style={mainStyles.advanceBtnTxt}>Advance Generation</Text>
       </Pressable>
-
-      {/* <Text style={{ fontSize: 21, color: '#fff' }}>{message}</Text> */}
-      <StatusBar style="auto" />
     </View>
   );
 }
