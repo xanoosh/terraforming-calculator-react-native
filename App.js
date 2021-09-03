@@ -4,7 +4,7 @@ import { Text, View, Pressable } from 'react-native';
 import Resource from './modules/Resource.js';
 import TerraformingPoints from './modules/TerraformingPoints';
 import { mainStyles } from './style/styles.js';
-import { getData, saveResource } from './functions/Functions';
+import { getData, saveResource, loadValues } from './functions/Functions';
 
 export default function App() {
   //hooks with resource values and production level
@@ -40,34 +40,35 @@ export default function App() {
 
   //get stored data on load
   useEffect(() => {
-    (async () => {
-      const moneyValue = await getData('Money');
-      if (moneyValue) setMoney(Number(moneyValue));
-      const moneyProd = await getData('MoneyProd');
-      if (moneyProd) setMoneyProd(Number(moneyProd));
-      const steelValue = await getData('Steel');
-      if (steelValue) setSteel(Number(steelValue));
-      const steelProd = await getData('SteelProd');
-      if (steelProd) setSteelProd(Number(steelProd));
-      const titaniumValue = await getData('Titanium');
-      if (titaniumValue) setTitanium(Number(titaniumValue));
-      const titaniumProd = await getData('TitaniumProd');
-      if (titaniumProd) setTitaniumProd(Number(titaniumProd));
-      const plantValue = await getData('Plant');
-      if (plantValue) setPlant(Number(plantValue));
-      const plantProd = await getData('PlantProd');
-      if (plantProd) setPlantProd(Number(plantProd));
-      const energyValue = await getData('Energy');
-      if (energyValue) setEnergy(Number(energyValue));
-      const energyProd = await getData('EnergyProd');
-      if (energyProd) setEnergyProd(Number(energyProd));
-      const heatValue = await getData('Heat');
-      if (heatValue) setHeat(Number(heatValue));
-      const heatProd = await getData('HeatProd');
-      if (heatProd) setHeatProd(Number(heatProd));
-      const TR = await getData('TR');
-      if (TR) setTR(Number(TR));
-    })();
+    loadValues(valuesArray);
+    // (async () => {
+    //   const moneyValue = await getData('Money');
+    //   if (moneyValue) setMoney(Number(moneyValue));
+    //   const moneyProd = await getData('MoneyProd');
+    //   if (moneyProd) setMoneyProd(Number(moneyProd));
+    //   const steelValue = await getData('Steel');
+    //   if (steelValue) setSteel(Number(steelValue));
+    //   const steelProd = await getData('SteelProd');
+    //   if (steelProd) setSteelProd(Number(steelProd));
+    //   const titaniumValue = await getData('Titanium');
+    //   if (titaniumValue) setTitanium(Number(titaniumValue));
+    //   const titaniumProd = await getData('TitaniumProd');
+    //   if (titaniumProd) setTitaniumProd(Number(titaniumProd));
+    //   const plantValue = await getData('Plant');
+    //   if (plantValue) setPlant(Number(plantValue));
+    //   const plantProd = await getData('PlantProd');
+    //   if (plantProd) setPlantProd(Number(plantProd));
+    //   const energyValue = await getData('Energy');
+    //   if (energyValue) setEnergy(Number(energyValue));
+    //   const energyProd = await getData('EnergyProd');
+    //   if (energyProd) setEnergyProd(Number(energyProd));
+    //   const heatValue = await getData('Heat');
+    //   if (heatValue) setHeat(Number(heatValue));
+    //   const heatProd = await getData('HeatProd');
+    //   if (heatProd) setHeatProd(Number(heatProd));
+    //   const TR = await getData('TR');
+    //   if (TR) setTR(Number(TR));
+    // })();
   }, []);
 
   const handleResourceChange = (name, val) => {
