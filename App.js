@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, Pressable } from 'react-native';
 
 import Resource from './modules/Resource.js';
-import TerraformingPoints from './modules/TerraformingPoints.js';
+import TerraformingPoints from './modules/TerraformingPoints';
 import { mainStyles } from './style/styles.js';
 import { getData, saveResource } from './functions/Functions';
 
@@ -20,7 +20,23 @@ export default function App() {
   const [energyProd, setEnergyProd] = useState(0);
   const [heat, setHeat] = useState(0);
   const [heatProd, setHeatProd] = useState(0);
-  const [terraformingPoints, setTerraformingPoints] = useState(20);
+  const [TR, setTR] = useState(20);
+
+  const valuesArray = [
+    { name: 'Money', value: money, setter: setMoney },
+    { name: 'MoneyProd', value: moneyProd, setter: setMoneyProd },
+    { name: 'Steel', value: steel, setter: setSteel },
+    { name: 'SteelProd', value: steelProd, setter: setSteelProd },
+    { name: 'Titanium', value: titanium, setter: setTitanium },
+    { name: 'TitaniumProd', value: titaniumProd, setter: setTitaniumProd },
+    { name: 'Plant', value: plant, setter: setPlant },
+    { name: 'PlantProd', value: plantProd, setPlantProd },
+    { name: 'Energy', value: energy, setter: setEnergy },
+    { name: 'EnergyProd', value: energyProd, setter: setEnergyProd },
+    { name: 'Heat', value: heat, setter: setHeat },
+    { name: 'HeatProd', value: heatProd, setter: setHeatProd },
+    { name: 'TR', value: TR, setter: setTR },
+  ];
 
   //get stored data on load
   useEffect(() => {
@@ -49,8 +65,8 @@ export default function App() {
       if (heatValue) setHeat(Number(heatValue));
       const heatProd = await getData('HeatProd');
       if (heatProd) setHeatProd(Number(heatProd));
-      const terraformingPoints = await getData('TerraformingPoints');
-      if (terraformingPoints) setTerraformingPoints(Number(terraformingPoints));
+      const TR = await getData('TR');
+      if (TR) setTR(Number(TR));
     })();
   }, []);
 
@@ -103,9 +119,9 @@ export default function App() {
       saveResource(name, heatProd + val);
       setHeatProd((prev) => prev + val);
     }
-    if (name === 'TerraformingPoints') {
-      saveResource(name, terraformingPoints + val);
-      setTerraformingPoints((prev) => prev + val);
+    if (name === 'TR') {
+      saveResource(name, TR + val);
+      setTR((prev) => prev + val);
     }
   };
 
@@ -139,11 +155,11 @@ export default function App() {
     setEnergyProd(0);
     setHeat(0);
     setHeatProd(0);
-    saveResource('TerraformingPoints', 20);
-    setTerraformingPoints(20);
+    saveResource('TR', 20);
+    setTR(20);
   };
   const handleAdvanceGeneration = () => {
-    handleResourceChange('Money', moneyProd + terraformingPoints);
+    handleResourceChange('Money', moneyProd + TR);
     handleResourceChange('Steel', steelProd);
     handleResourceChange('Titanium', titaniumProd);
     handleResourceChange('Plant', plantProd);
@@ -159,8 +175,8 @@ export default function App() {
           <Text style={mainStyles.resetBtnTxt}>Reset</Text>
         </Pressable>
         <TerraformingPoints
-          name="TerraformingPoints"
-          value={terraformingPoints}
+          name="TR"
+          value={TR}
           setter={handleResourceChange}
         />
       </View>
