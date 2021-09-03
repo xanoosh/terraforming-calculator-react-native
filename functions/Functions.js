@@ -21,45 +21,91 @@ const saveResource = (name, val) => {
 //load values if available:
 const loadValues = async (valuesArray) => {
   for (const value of valuesArray) {
-    const resource = await getData(value.name);
     try {
+      const resource = await getData(value.name);
       value.setter(Number(resource));
     } catch (e) {
-      if (resource === 'TR') value.setter(20);
-      else value.setter(0);
+      //do nothing
     }
-    // const resource = await getData(value.name);
-    // const setter = value.setter;
-    // if (resource) setter(Number(resource));
   }
 };
-// (async () => {
-//   const moneyValue = await getData('Money');
-//   if (moneyValue) setMoney(Number(moneyValue));
-//   const moneyProd = await getData('MoneyProd');
-//   if (moneyProd) setMoneyProd(Number(moneyProd));
-//   const steelValue = await getData('Steel');
-//   if (steelValue) setSteel(Number(steelValue));
-//   const steelProd = await getData('SteelProd');
-//   if (steelProd) setSteelProd(Number(steelProd));
-//   const titaniumValue = await getData('Titanium');
-//   if (titaniumValue) setTitanium(Number(titaniumValue));
-//   const titaniumProd = await getData('TitaniumProd');
-//   if (titaniumProd) setTitaniumProd(Number(titaniumProd));
-//   const plantValue = await getData('Plant');
-//   if (plantValue) setPlant(Number(plantValue));
-//   const plantProd = await getData('PlantProd');
-//   if (plantProd) setPlantProd(Number(plantProd));
-//   const energyValue = await getData('Energy');
-//   if (energyValue) setEnergy(Number(energyValue));
-//   const energyProd = await getData('EnergyProd');
-//   if (energyProd) setEnergyProd(Number(energyProd));
-//   const heatValue = await getData('Heat');
-//   if (heatValue) setHeat(Number(heatValue));
-//   const heatProd = await getData('HeatProd');
-//   if (heatProd) setHeatProd(Number(heatProd));
-//   const TR = await getData('TR');
-//   if (TR) setTR(Number(TR));
-// })();
 
-export { getData, saveResource, loadValues };
+//reset resoucers data:
+const handleReset = (valuesArray) => {
+  valuesArray.forEach((value) => {
+    if (value.name === 'TR') {
+      saveResource(value.name, 0);
+      value.setter(0);
+    } else {
+      saveResource(value.name, 20);
+      value.setter(20);
+    }
+  });
+};
+
+//change specific item value:
+const handleResourceChange = (name, val, valuesArray) => {
+  for (let i = 0; i < valuesArray.length; i++) {
+    if ((valuesArray[i].name = name)) {
+      saveResource(name, valuesArray[i].value + val);
+      valuesArray[i].setter((prev) => prev + val);
+    }
+  }
+};
+
+// const handleChange = (name, val, valuesArray) => {
+//   if (name === 'Money') {
+//     saveResource(name, money + val);
+//     setMoney((prev) => prev + val);
+//   }
+//   if (name === 'MoneyProd') {
+//     saveResource(name, moneyProd + val);
+//     setMoneyProd((prev) => prev + val);
+//   }
+//   if (name === 'Steel') {
+//     saveResource(name, steel + val);
+//     setSteel((prev) => prev + val);
+//   }
+//   if (name === 'SteelProd') {
+//     saveResource(name, steelProd + val);
+//     setSteelProd((prev) => prev + val);
+//   }
+//   if (name === 'Titanium') {
+//     saveResource(name, titanium + val);
+//     setTitanium((prev) => prev + val);
+//   }
+//   if (name === 'TitaniumProd') {
+//     saveResource(name, titaniumProd + val);
+//     setTitaniumProd((prev) => prev + val);
+//   }
+//   if (name === 'Plant') {
+//     saveResource(name, plant + val);
+//     setPlant((prev) => prev + val);
+//   }
+//   if (name === 'PlantProd') {
+//     saveResource(name, plantProd + val);
+//     setPlantProd((prev) => prev + val);
+//   }
+//   if (name === 'Energy') {
+//     saveResource(name, energy + val);
+//     setEnergy((prev) => prev + val);
+//   }
+//   if (name === 'EnergyProd') {
+//     saveResource(name, energyProd + val);
+//     setEnergyProd((prev) => prev + val);
+//   }
+//   if (name === 'Heat') {
+//     saveResource(name, heat + val);
+//     setHeat((prev) => prev + val);
+//   }
+//   if (name === 'HeatProd') {
+//     saveResource(name, heatProd + val);
+//     setHeatProd((prev) => prev + val);
+//   }
+//   if (name === 'TR') {
+//     saveResource(name, TR + val);
+//     setTR((prev) => prev + val);
+//   }
+// };
+
+export { saveResource, loadValues, handleReset, handleResourceChange };
