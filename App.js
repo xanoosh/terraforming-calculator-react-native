@@ -36,7 +36,7 @@ export default function App() {
     { name: 'Titanium', value: titanium, setter: setTitanium },
     { name: 'TitaniumProd', value: titaniumProd, setter: setTitaniumProd },
     { name: 'Plant', value: plant, setter: setPlant },
-    { name: 'PlantProd', value: plantProd, setPlantProd },
+    { name: 'PlantProd', value: plantProd, setter: setPlantProd },
     { name: 'Energy', value: energy, setter: setEnergy },
     { name: 'EnergyProd', value: energyProd, setter: setEnergyProd },
     { name: 'Heat', value: heat, setter: setHeat },
