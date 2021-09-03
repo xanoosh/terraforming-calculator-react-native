@@ -16,7 +16,12 @@ const Resource = ({
     <>
       <View style={resourceStyles.resource}>
         <View style={resourceStyles.col}>
-          <SingleResourceCell name={name} value={value} setter={setter} />
+          <SingleResourceCell
+            name={name}
+            value={value}
+            setter={setter}
+            valuesArray={valuesArray}
+          />
         </View>
         <View style={resourceStyles.col}>
           <Text style={resourceStyles.name}>{name}</Text>
@@ -27,6 +32,7 @@ const Resource = ({
               name={productionName}
               value={production}
               setter={setter}
+              valuesArray={valuesArray}
             />
           </View>
         </View>

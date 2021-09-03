@@ -46,7 +46,7 @@ const handleReset = (valuesArray) => {
 //change specific item value:
 const handleResourceChange = (name, val, valuesArray) => {
   for (let i = 0; i < valuesArray.length; i++) {
-    if ((valuesArray[i].name = name)) {
+    if (valuesArray[i].name === name) {
       saveResource(name, valuesArray[i].value + val);
       valuesArray[i].setter((prev) => prev + val);
     }

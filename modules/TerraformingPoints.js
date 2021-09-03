@@ -11,7 +11,7 @@ const TerraformingPoints = ({ name, value, setter, valuesArray }) => {
       <View style={terraformingPointsStyles.row}>
         <Pressable
           style={terraformingPointsStyles.button}
-          onPress={() => setter(name, -1)}
+          onPress={() => setter(name, -1, valuesArray)}
         >
           <Text style={terraformingPointsStyles.buttonText}>-1</Text>
         </Pressable>
@@ -19,7 +19,7 @@ const TerraformingPoints = ({ name, value, setter, valuesArray }) => {
 
         <Pressable
           style={terraformingPointsStyles.button}
-          onPress={() => setter(name, 1)}
+          onPress={() => setter(name, 1, valuesArray)}
         >
           <Text style={terraformingPointsStyles.buttonText}>1</Text>
         </Pressable>
