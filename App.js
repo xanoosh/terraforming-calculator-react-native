@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, Pressable } from 'react-native';
 
 import Resource from './modules/Resource.js';
+import ResourceList from './modules/ResourcesList';
 import TerraformingPoints from './modules/TerraformingPoints';
 import { mainStyles } from './style/styles.js';
 import {
@@ -80,53 +81,9 @@ export default function App() {
         <Text style={mainStyles.descriptitonTxt}>Name</Text>
         <Text style={mainStyles.descriptitonTxt}>Production</Text>
       </View>
-      <Resource
-        name="Money"
-        productionName="MoneyProd"
-        value={money}
-        production={moneyProd}
-        setter={handleResourceChange}
+      <ResourceList
         valuesArray={valuesArray}
-      />
-      <Resource
-        name="Steel"
-        productionName="SteelProd"
-        value={steel}
-        production={steelProd}
-        setter={handleResourceChange}
-        valuesArray={valuesArray}
-      />
-      <Resource
-        name="Titanium"
-        productionName="TitaniumProd"
-        value={titanium}
-        production={titaniumProd}
-        setter={handleResourceChange}
-        valuesArray={valuesArray}
-      />
-      <Resource
-        name="Plant"
-        productionName="PlantProd"
-        value={plant}
-        production={plantProd}
-        setter={handleResourceChange}
-        valuesArray={valuesArray}
-      />
-      <Resource
-        name="Energy"
-        productionName="EnergyProd"
-        value={energy}
-        production={energyProd}
-        setter={handleResourceChange}
-        valuesArray={valuesArray}
-      />
-      <Resource
-        name="Heat"
-        productionName="HeatProd"
-        value={heat}
-        production={heatProd}
-        setter={handleResourceChange}
-        valuesArray={valuesArray}
+        handleResourceChange={handleResourceChange}
       />
 
       <Pressable
@@ -137,4 +94,57 @@ export default function App() {
       </Pressable>
     </View>
   );
+}
+
+//old resources:
+
+{
+  /* <Resource
+name="Money"
+productionName="MoneyProd"
+value={money}
+production={moneyProd}
+setter={handleResourceChange}
+valuesArray={valuesArray}
+/>
+<Resource
+name="Steel"
+productionName="SteelProd"
+value={steel}
+production={steelProd}
+setter={handleResourceChange}
+valuesArray={valuesArray}
+/>
+<Resource
+name="Titanium"
+productionName="TitaniumProd"
+value={titanium}
+production={titaniumProd}
+setter={handleResourceChange}
+valuesArray={valuesArray}
+/>
+<Resource
+name="Plant"
+productionName="PlantProd"
+value={plant}
+production={plantProd}
+setter={handleResourceChange}
+valuesArray={valuesArray}
+/>
+<Resource
+name="Energy"
+productionName="EnergyProd"
+value={energy}
+production={energyProd}
+setter={handleResourceChange}
+valuesArray={valuesArray}
+/>
+<Resource
+name="Heat"
+productionName="HeatProd"
+value={heat}
+production={heatProd}
+setter={handleResourceChange}
+valuesArray={valuesArray}
+/> */
 }
