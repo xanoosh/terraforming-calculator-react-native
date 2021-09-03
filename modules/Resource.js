@@ -4,7 +4,14 @@ import React from 'react';
 
 import SingleResourceCell from './SingleResourceCell';
 
-const Resource = ({ name, value, production, productionName, setter }) => {
+const Resource = ({
+  name,
+  value,
+  production,
+  productionName,
+  setter,
+  valuesArray,
+}) => {
   return (
     <>
       <View style={resourceStyles.resource}>

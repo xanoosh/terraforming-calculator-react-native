@@ -34,11 +34,11 @@ const loadValues = async (valuesArray) => {
 const handleReset = (valuesArray) => {
   valuesArray.forEach((value) => {
     if (value.name === 'TR') {
-      saveResource(value.name, 0);
-      value.setter(0);
-    } else {
       saveResource(value.name, 20);
       value.setter(20);
+    } else {
+      saveResource(value.name, 0);
+      value.setter(0);
     }
   });
 };
@@ -48,7 +48,8 @@ const handleResourceChange = (name, val, valuesArray) => {
   for (let i = 0; i < valuesArray.length; i++) {
     if ((valuesArray[i].name = name)) {
       saveResource(name, valuesArray[i].value + val);
-      valuesArray[i].setter((prev) => prev + val);
+      //   valuesArray[i].setter((prev) => prev + val);
+      valuesArray[i].setter(valuesArray[i].value + val);
     }
   }
 };

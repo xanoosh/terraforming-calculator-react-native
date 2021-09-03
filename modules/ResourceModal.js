@@ -3,7 +3,15 @@ import { Modal, Pressable, Text, View } from 'react-native';
 import React from 'react';
 import ResourceExpanded from './ResourceExpanded';
 
-const ResourceModal = ({ opened, setOpened, name, title, value, setter }) => {
+const ResourceModal = ({
+  opened,
+  setOpened,
+  name,
+  title,
+  value,
+  setter,
+  valuesArray,
+}) => {
   return (
     <>
       <Pressable
@@ -33,6 +41,7 @@ const ResourceModal = ({ opened, setOpened, name, title, value, setter }) => {
             title={title}
             value={value}
             setter={setter}
+            valuesArray={valuesArray}
           />
         </View>
       </Modal>

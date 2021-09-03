@@ -29,7 +29,7 @@ export default function App() {
   const [TR, setTR] = useState(20);
 
   const valuesArray = [
-    { name: 'Money', value: money, setter: setMoney },
+    { name: 'Money', value: money, setter: (val) => setMoney(val) },
     { name: 'MoneyProd', value: moneyProd, setter: setMoneyProd },
     { name: 'Steel', value: steel, setter: setSteel },
     { name: 'SteelProd', value: steelProd, setter: setSteelProd },
@@ -72,6 +72,7 @@ export default function App() {
           name="TR"
           value={TR}
           setter={handleResourceChange}
+          valuesArray={valuesArray}
         />
       </View>
       <View style={mainStyles.descriptiton}>
@@ -85,6 +86,7 @@ export default function App() {
         value={money}
         production={moneyProd}
         setter={handleResourceChange}
+        valuesArray={valuesArray}
       />
       <Resource
         name="Steel"
@@ -92,6 +94,7 @@ export default function App() {
         value={steel}
         production={steelProd}
         setter={handleResourceChange}
+        valuesArray={valuesArray}
       />
       <Resource
         name="Titanium"
@@ -99,6 +102,7 @@ export default function App() {
         value={titanium}
         production={titaniumProd}
         setter={handleResourceChange}
+        valuesArray={valuesArray}
       />
       <Resource
         name="Plant"
@@ -106,6 +110,7 @@ export default function App() {
         value={plant}
         production={plantProd}
         setter={handleResourceChange}
+        valuesArray={valuesArray}
       />
       <Resource
         name="Energy"
@@ -113,6 +118,7 @@ export default function App() {
         value={energy}
         production={energyProd}
         setter={handleResourceChange}
+        valuesArray={valuesArray}
       />
       <Resource
         name="Heat"
@@ -120,6 +126,7 @@ export default function App() {
         value={heat}
         production={heatProd}
         setter={handleResourceChange}
+        valuesArray={valuesArray}
       />
 
       <Pressable

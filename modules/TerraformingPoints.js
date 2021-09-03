@@ -2,7 +2,7 @@ import { terraformingPointsStyles } from '../style/styles.js';
 import { Text, Pressable, View } from 'react-native';
 import React from 'react';
 
-const TerraformingPoints = ({ name, value, setter }) => {
+const TerraformingPoints = ({ name, value, setter, valuesArray }) => {
   return (
     <View style={terraformingPointsStyles.cell}>
       <View style={terraformingPointsStyles.row}>
