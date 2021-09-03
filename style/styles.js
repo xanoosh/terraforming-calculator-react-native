@@ -19,9 +19,10 @@ const mainStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   resetBtn: {
-    height: '100%',
+    height: '50%',
     width: '30%',
     display: 'flex',
     flexDirection: 'row',
@@ -46,13 +47,13 @@ const mainStyles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontSize: 16,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
   },
   descriptiton: {
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 25,
+    marginBottom: 20,
   },
   descriptitonTxt: {
     color: '#fff',
@@ -241,10 +242,12 @@ const terraformingPointsStyles = StyleSheet.create({
     alignItems: 'center',
   },
   name: {
-    textAlign: 'center',
-    fontSize: 20,
-    color: '#fff',
     paddingBottom: 5,
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    fontSize: 13,
   },
   value: {
     color: '#fff',
