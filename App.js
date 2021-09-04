@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, Pressable } from 'react-native';
 
-import Resource from './modules/Resource.js';
 import ResourceList from './modules/ResourcesList';
 import TerraformingPoints from './modules/TerraformingPoints';
 import { mainStyles } from './style/styles.js';
 import {
-  getData,
+  // getData,
   saveResource,
   loadValues,
   handleReset,
   handleResourceChange,
 } from './functions/Functions';
+
+import heat from './images/rheat.svg';
+import steel from './images/rsteel.svg';
+import titanium from './images/rtitanium.svg';
+import plant from './images/rplant.svg';
 
 export default function App() {
   //hooks with resource values and production level
@@ -94,57 +98,4 @@ export default function App() {
       </Pressable>
     </View>
   );
-}
-
-//old resources:
-
-{
-  /* <Resource
-name="Money"
-productionName="MoneyProd"
-value={money}
-production={moneyProd}
-setter={handleResourceChange}
-valuesArray={valuesArray}
-/>
-<Resource
-name="Steel"
-productionName="SteelProd"
-value={steel}
-production={steelProd}
-setter={handleResourceChange}
-valuesArray={valuesArray}
-/>
-<Resource
-name="Titanium"
-productionName="TitaniumProd"
-value={titanium}
-production={titaniumProd}
-setter={handleResourceChange}
-valuesArray={valuesArray}
-/>
-<Resource
-name="Plant"
-productionName="PlantProd"
-value={plant}
-production={plantProd}
-setter={handleResourceChange}
-valuesArray={valuesArray}
-/>
-<Resource
-name="Energy"
-productionName="EnergyProd"
-value={energy}
-production={energyProd}
-setter={handleResourceChange}
-valuesArray={valuesArray}
-/>
-<Resource
-name="Heat"
-productionName="HeatProd"
-value={heat}
-production={heatProd}
-setter={handleResourceChange}
-valuesArray={valuesArray}
-/> */
 }
