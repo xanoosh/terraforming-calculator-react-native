@@ -94,6 +94,11 @@ const resourceStyles = StyleSheet.create({
     textAlign: 'center',
     width: '100%',
   },
+  imgContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  },
 });
 
 //resource expanded component

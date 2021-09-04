@@ -1,5 +1,5 @@
 import { resourceStyles } from '../style/styles.js';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import React from 'react';
 
 import SingleResourceCell from './SingleResourceCell';
@@ -11,6 +11,7 @@ const Resource = ({
   productionName,
   setter,
   valuesArray,
+  image,
 }) => {
   return (
     <>
@@ -24,7 +25,13 @@ const Resource = ({
           />
         </View>
         <View style={resourceStyles.col}>
-          <Text style={resourceStyles.name}>{name}</Text>
+          {image ? (
+            <View style={resourceStyles.imgContainer}>
+              <Image source={image} width={50} height={50} />
+            </View>
+          ) : (
+            <Text style={resourceStyles.name}>{name}</Text>
+          )}
         </View>
         <View style={resourceStyles.col}>
           <View style={resourceStyles.col}>

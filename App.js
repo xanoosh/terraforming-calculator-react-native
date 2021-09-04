@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Image, Pressable } from 'react-native';
+import { Text, View, Pressable } from 'react-native';
 
 import ResourceList from './modules/ResourcesList';
 import TerraformingPoints from './modules/TerraformingPoints';

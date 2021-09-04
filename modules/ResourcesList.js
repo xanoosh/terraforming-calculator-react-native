@@ -16,6 +16,7 @@ const ResourceList = ({ valuesArray, handleResourceChange }) => {
           production={valuesArray[i + 1].value}
           setter={handleResourceChange}
           valuesArray={valuesArray}
+          image={el?.img}
         />
       );
     }
