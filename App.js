@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Pressable } from 'react-native';
+import { Text, View, Image, Pressable } from 'react-native';
 
 import ResourceList from './modules/ResourcesList';
 import TerraformingPoints from './modules/TerraformingPoints';
@@ -12,10 +12,11 @@ import {
   handleResourceChange,
 } from './functions/Functions';
 
-import heatImg from './images/rheat.svg';
-import steelImg from './images/rsteel.svg';
-import titaniumImg from './images/rtitanium.svg';
-import plantImg from './images/rplant.svg';
+import hImg from './assets/rheat.png';
+import eImg from './assets/renergy.png';
+import sImg from './assets/rsteel.png';
+import tImg from './assets/rtitanium.png';
+import pImg from './assets/rplant.png';
 
 export default function App() {
   const [money, setMoney] = useState(0);
@@ -33,17 +34,17 @@ export default function App() {
   const [TR, setTR] = useState(20);
 
   const valuesArray = [
-    { name: 'Money', value: money, setter: (val) => setMoney(val) },
+    { name: 'Money', value: money, setter: setMoney },
     { name: 'MoneyProd', value: moneyProd, setter: setMoneyProd },
-    { name: 'Steel', value: steel, setter: setSteel },
+    { name: 'Steel', value: steel, setter: setSteel, img: sImg },
     { name: 'SteelProd', value: steelProd, setter: setSteelProd },
-    { name: 'Titanium', value: titanium, setter: setTitanium },
+    { name: 'Titanium', value: titanium, setter: setTitanium, img: tImg },
     { name: 'TitaniumProd', value: titaniumProd, setter: setTitaniumProd },
-    { name: 'Plant', value: plant, setter: setPlant },
+    { name: 'Plant', value: plant, setter: setPlant, img: pImg },
     { name: 'PlantProd', value: plantProd, setter: setPlantProd },
-    { name: 'Energy', value: energy, setter: setEnergy },
+    { name: 'Energy', value: energy, setter: setEnergy, img: eImg },
     { name: 'EnergyProd', value: energyProd, setter: setEnergyProd },
-    { name: 'Heat', value: heat, setter: setHeat },
+    { name: 'Heat', value: heat, setter: setHeat, img: hImg },
     { name: 'HeatProd', value: heatProd, setter: setHeatProd },
     { name: 'TR', value: TR, setter: setTR },
   ];
@@ -83,9 +84,6 @@ export default function App() {
         valuesArray={valuesArray}
         handleResourceChange={handleResourceChange}
       />
-      <View>
-        <Text>{plantImg}ee</Text>
-      </View>
       <Pressable
         style={mainStyles.advanceBtn}
         onPress={() => handleAdvanceGeneration()}
