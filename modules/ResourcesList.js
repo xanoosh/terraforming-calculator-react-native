@@ -1,10 +1,11 @@
 import React from 'react';
-
 import Resource from './Resource';
+import { Text, View } from 'react-native';
+import { resourcesListStyles } from './style/styles.js';
 
 const ResourceList = ({ valuesArray, handleResourceChange }) => {
   const resourceArr = [...valuesArray].slice(0, -1);
-  const list = resourceArr.map((el, i) => {
+  const resourcesComponents = resourceArr.map((el, i) => {
     if (i % 2 === 0) {
       return (
         <Resource
@@ -19,7 +20,16 @@ const ResourceList = ({ valuesArray, handleResourceChange }) => {
       );
     }
   });
-  return <>{list}</>;
+  return (
+    <>
+      <View style={resourcesListStyles.descriptiton}>
+        <Text style={resourcesListStyles.descriptitonTxt}>Quantity</Text>
+        <Text style={resourcesListStyles.descriptitonTxt}>Name</Text>
+        <Text style={resourcesListStyles.descriptitonTxt}>Production</Text>
+      </View>
+      {resourcesComponents}
+    </>
+  );
 };
 
 export default ResourceList;

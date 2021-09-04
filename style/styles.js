@@ -49,6 +49,10 @@ const mainStyles = StyleSheet.create({
     fontSize: 16,
     // fontWeight: 'bold',
   },
+});
+
+//resource list component:
+const resourcesListStyles = StyleSheet.create({
   descriptiton: {
     width: '100%',
     flexDirection: 'row',

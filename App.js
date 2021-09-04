@@ -18,7 +18,6 @@ import titanium from './images/rtitanium.svg';
 import plant from './images/rplant.svg';
 
 export default function App() {
-  //hooks with resource values and production level
   const [money, setMoney] = useState(0);
   const [moneyProd, setMoneyProd] = useState(0);
   const [steel, setSteel] = useState(0);
@@ -60,7 +59,7 @@ export default function App() {
     handleResourceChange('Titanium', titaniumProd, valuesArray);
     handleResourceChange('Plant', plantProd, valuesArray);
     handleResourceChange('Heat', energy + heatProd, valuesArray);
-    //edge case: energy on adv gen is always equal to energy production
+    //energy on adv gen is always equal to energy production
     setEnergy(energyProd);
     saveResource('Energy', energyProd);
   };
@@ -79,11 +78,6 @@ export default function App() {
           setter={handleResourceChange}
           valuesArray={valuesArray}
         />
-      </View>
-      <View style={mainStyles.descriptiton}>
-        <Text style={mainStyles.descriptitonTxt}>Quantity</Text>
-        <Text style={mainStyles.descriptitonTxt}>Name</Text>
-        <Text style={mainStyles.descriptitonTxt}>Production</Text>
       </View>
       <ResourceList
         valuesArray={valuesArray}
