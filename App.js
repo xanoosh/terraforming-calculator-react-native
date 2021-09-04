@@ -12,10 +12,10 @@ import {
   handleResourceChange,
 } from './functions/Functions';
 
-import heat from './images/rheat.svg';
-import steel from './images/rsteel.svg';
-import titanium from './images/rtitanium.svg';
-import plant from './images/rplant.svg';
+import heatImg from './images/rheat.svg';
+import steelImg from './images/rsteel.svg';
+import titaniumImg from './images/rtitanium.svg';
+import plantImg from './images/rplant.svg';
 
 export default function App() {
   const [money, setMoney] = useState(0);
@@ -83,7 +83,9 @@ export default function App() {
         valuesArray={valuesArray}
         handleResourceChange={handleResourceChange}
       />
-
+      <View>
+        <Text>{plantImg}ee</Text>
+      </View>
       <Pressable
         style={mainStyles.advanceBtn}
         onPress={() => handleAdvanceGeneration()}

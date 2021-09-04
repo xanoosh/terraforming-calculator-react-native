@@ -1,7 +1,7 @@
 import React from 'react';
 import Resource from './Resource';
 import { Text, View } from 'react-native';
-import { resourcesListStyles } from './style/styles.js';
+import { resourcesListStyles } from '../style/styles.js';
 
 const ResourceList = ({ valuesArray, handleResourceChange }) => {
   const resourceArr = [...valuesArray].slice(0, -1);

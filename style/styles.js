@@ -4,7 +4,8 @@ import { StyleSheet } from 'react-native';
 const mainStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#333533',
+    // backgroundColor: '#333533',
+    backgroundColor: '#434549',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
@@ -39,7 +40,8 @@ const mainStyles = StyleSheet.create({
     width: '50%',
     position: 'absolute',
     bottom: '5%',
-    backgroundColor: '#4695ec',
+    // backgroundColor: '#4695ec',
+    backgroundColor: '#447CEE',
     padding: 9,
   },
   advanceBtnTxt: {
@@ -77,7 +79,6 @@ const resourceStyles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     width: '100%',
-    // padding: 10,
     color: '#fff',
     marginBottom: 15,
   },
@@ -131,7 +132,8 @@ const resourceExpandedStyles = StyleSheet.create({
   btnExpanded: {
     padding: 10,
     width: '30%',
-    backgroundColor: '#4695ec',
+    // backgroundColor: '#4695ec',
+    backgroundColor: '#447CEE',
   },
   btnTxtExpanded: {
     color: '#fff',
@@ -146,7 +148,8 @@ const resourceModalStyles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#333533',
+    // backgroundColor: '#333533',
+    backgroundColor: '#434549',
     width: '100%',
     height: '100%',
     position: 'relative',
@@ -217,7 +220,8 @@ const singleResourceCellStyles = StyleSheet.create({
   button: {
     width: 30,
     height: 30,
-    backgroundColor: '#4695ec',
+    // backgroundColor: '#4695ec',
+    backgroundColor: '#447CEE',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -263,7 +267,8 @@ const terraformingPointsStyles = StyleSheet.create({
   button: {
     width: 30,
     height: 30,
-    backgroundColor: '#4695ec',
+    // backgroundColor: '#4695ec',
+    backgroundColor: '#447CEE',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -278,6 +283,7 @@ const terraformingPointsStyles = StyleSheet.create({
 
 export {
   mainStyles,
+  resourcesListStyles,
   resourceStyles,
   resourceExpandedStyles,
   resourceModalStyles,
