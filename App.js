@@ -64,6 +64,15 @@ export default function App() {
     setEnergy(energyProd);
     saveResource('Energy', energyProd);
   };
+  const handleGoBack = () => {
+    handleResourceChange('Money', (moneyProd + TR) * -1, valuesArray);
+    handleResourceChange('Steel', steelProd * -1, valuesArray);
+    handleResourceChange('Titanium', titaniumProd * -1, valuesArray);
+    handleResourceChange('Plant', plantProd * -1, valuesArray);
+    handleResourceChange('Heat', (energy + heatProd) * -1, valuesArray);
+    setEnergy(energyProd);
+    saveResource('Energy', energyProd);
+  };
   return (
     <View style={mainStyles.container}>
       <View style={mainStyles.viewTop}>
@@ -84,10 +93,7 @@ export default function App() {
         valuesArray={valuesArray}
         handleResourceChange={handleResourceChange}
       />
-      <Pressable
-        style={mainStyles.backBtn}
-        onPress={() => handleAdvanceGeneration()}
-      >
+      <Pressable style={mainStyles.backBtn} onPress={() => handleGoBack()}>
         <Text style={mainStyles.backBtnTxt}>Back</Text>
       </Pressable>
       <Pressable
