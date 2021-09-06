@@ -51,6 +51,17 @@ const mainStyles = StyleSheet.create({
     fontSize: 16,
     // fontWeight: 'bold',
   },
+  backBtn: {
+    position: 'absolute',
+    bottom: '5%',
+    left: '5%',
+    width: '20%',
+  },
+  backBtnTxt: {
+    width: '100%',
+    color: '#fff',
+    textAlign: 'center',
+  },
 });
 
 //resource list component:

@@ -85,6 +85,12 @@ export default function App() {
         handleResourceChange={handleResourceChange}
       />
       <Pressable
+        style={mainStyles.backBtn}
+        onPress={() => handleAdvanceGeneration()}
+      >
+        <Text style={mainStyles.backBtnTxt}>Back</Text>
+      </Pressable>
+      <Pressable
         style={mainStyles.advanceBtn}
         onPress={() => handleAdvanceGeneration()}
       >
