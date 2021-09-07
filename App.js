@@ -12,6 +12,7 @@ import {
   handleResourceChange,
 } from './functions/Functions';
 
+import mImg from './assets/rmoney.png';
 import hImg from './assets/rheat.png';
 import eImg from './assets/renergy.png';
 import sImg from './assets/rsteel.png';
@@ -34,7 +35,7 @@ export default function App() {
   const [TR, setTR] = useState(20);
 
   const valuesArray = [
-    { name: 'Money', value: money, setter: setMoney },
+    { name: 'Money', value: money, setter: setMoney, img: mImg },
     { name: 'MoneyProd', value: moneyProd, setter: setMoneyProd },
     { name: 'Steel', value: steel, setter: setSteel, img: sImg },
     { name: 'SteelProd', value: steelProd, setter: setSteelProd },
