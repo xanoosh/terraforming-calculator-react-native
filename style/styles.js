@@ -110,6 +110,10 @@ const resourceStyles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
   },
+  image: {
+    width: 50,
+    height: 50,
+  },
 });
 
 //resource expanded component
@@ -183,8 +187,8 @@ const resourceModalStyles = StyleSheet.create({
   },
   close: {
     position: 'absolute',
-    top: 20,
-    right: 30,
+    bottom: 20,
+    right: '45%',
     zIndex: 20,
   },
   closeContent: {

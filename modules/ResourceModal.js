@@ -21,7 +21,7 @@ const ResourceModal = ({
         <Text style={resourceModalStyles.btnMoreTxt}>expand</Text>
       </Pressable>
       <Modal
-        animationType="fade"
+        animationType="slide"
         presentationStyle="overFullScreen"
         transparent={true}
         visible={opened}

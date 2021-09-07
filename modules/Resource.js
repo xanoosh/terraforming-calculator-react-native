@@ -27,7 +27,7 @@ const Resource = ({
         <View style={resourceStyles.col}>
           {image ? (
             <View style={resourceStyles.imgContainer}>
-              <Image source={image} width={50} height={50} />
+              <Image style={resourceStyles.image} source={image} />
             </View>
           ) : (
             <Text style={resourceStyles.name}>{name}</Text>
