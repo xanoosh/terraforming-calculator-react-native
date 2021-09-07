@@ -53,7 +53,7 @@ const mainStyles = StyleSheet.create({
   },
   backBtn: {
     position: 'absolute',
-    bottom: '5%',
+    bottom: '6.5%',
     left: '5%',
     width: '20%',
   },
@@ -109,6 +109,7 @@ const resourceStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
+    marginTop: -10,
   },
   image: {
     width: 50,
