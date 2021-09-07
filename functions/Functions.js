@@ -18,6 +18,32 @@ const saveResource = (name, val) => {
   })();
 };
 
+//Resource array history data start
+const getResourceHistory = async (array) => {
+  try {
+    const value = await AsyncStorage.getItem(Json.stringify(array));
+    if (value !== null) return Json.parse(array);
+    else return false;
+  } catch (e) {
+    return false;
+  }
+};
+
+//cases:
+// 1.resource history set on load/reset
+// need some constant array for that.
+// 2. resource history on advGeneration (add new value to array)
+// 3. goback in history (remove las element and load again)
+// 4.any change in current array (resourceArr) changes last element of historyArray
+
+const setResourceHistory = (arrName, arr) => {
+  (async () => {
+    await AsyncStorage.setItem(arrName, Json.stringify(arr));
+  })();
+};
+
+//Resource array history data end
+
 //load values if available:
 const loadValues = async (valuesArray) => {
   for (const value of valuesArray) {
@@ -25,7 +51,7 @@ const loadValues = async (valuesArray) => {
       const resource = await getData(value.name);
       value.setter(Number(resource));
     } catch (e) {
-      //do nothing
+      return false;
     }
   }
 };
