@@ -22,7 +22,7 @@ const saveResource = (name, val) => {
 const getResourceHistory = async (array) => {
   try {
     const value = await AsyncStorage.getItem(Json.stringify(array));
-    if (value !== null) return Json.parse(array);
+    if (value !== null && Json.parse(array).length) return Json.parse(array);
     else return false;
   } catch (e) {
     return false;
@@ -36,17 +36,35 @@ const getResourceHistory = async (array) => {
 // 3. goback in history (remove las element and load again)
 // 4.any change in current array (resourceArr) changes last element of historyArray
 
-const setResourceHistory = (arrName, arr) => {
-  (async () => {
-    await AsyncStorage.setItem(arrName, Json.stringify(arr));
-  })();
+const setResourceHistory = (arrName, historyArr) => {
+  if (!getResourceHistory(arrName)) {
+    (async () => {
+      await AsyncStorage.setItem(arrName, Json.stringify(historyArr));
+    })();
+  }
+  if (getResourceHistory(arrName)) {
+    (async () => {
+      await AsyncStorage.setItem(arrName, Json.stringify(historyArr));
+    })();
+  }
+};
+
+const createNewHistoryElement = (valuesArray, historyArrName) => {
+  const newHistoryElement = valuesArray.map((value) => ({
+    name: value.name,
+    value: value.value,
+  }));
+  setResourceHistory(historyArrName, [
+    ...getResourceHistory(),
+    newHistoryElement,
+  ]);
 };
 
 //Resource array history data end
 
 //load values if available:
-const loadValues = async (valuesArray) => {
-  for (const value of valuesArray) {
+const loadValues = async (currentValuesArray) => {
+  for (const value of currentValuesArray) {
     try {
       const resource = await getData(value.name);
       value.setter(Number(resource));
@@ -57,8 +75,8 @@ const loadValues = async (valuesArray) => {
 };
 
 //reset resoucers data:
-const handleReset = (valuesArray) => {
-  valuesArray.forEach((value) => {
+const handleReset = (currentValuesArray) => {
+  currentValuesArray.forEach((value) => {
     if (value.name === 'TR') {
       saveResource(value.name, 20);
       value.setter(20);
@@ -70,10 +88,10 @@ const handleReset = (valuesArray) => {
 };
 
 //change specific item value:
-const handleResourceChange = (name, val, valuesArray) => {
-  for (let i = 0; i < valuesArray.length; i++) {
-    if (valuesArray[i].name === name) {
-      saveResource(name, valuesArray[i].value + val);
+const handleResourceChange = (name, val, currentValuesArray) => {
+  for (let i = 0; i < currentValuesArray.length; i++) {
+    if (currentValuesArray[i].name === name) {
+      // saveResource(name, currentValuesArray[i].value + val);
       valuesArray[i].setter((prev) => prev + val);
     }
   }

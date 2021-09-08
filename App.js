@@ -33,6 +33,7 @@ export default function App() {
   const [heat, setHeat] = useState(0);
   const [heatProd, setHeatProd] = useState(0);
   const [TR, setTR] = useState(20);
+  const [generationsNumber, setGenerationsNumber] = useState(0);
 
   const valuesArray = [
     { name: 'Money', value: money, setter: setMoney, img: mImg },
@@ -103,6 +104,7 @@ export default function App() {
       >
         <Text style={mainStyles.advanceBtnTxt}>Advance Generation</Text>
       </Pressable>
+      <Text>{generationsNumber}</Text>
     </View>
   );
 }

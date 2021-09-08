@@ -3,6 +3,8 @@ import { Modal, Pressable, Text, View } from 'react-native';
 import React from 'react';
 import ResourceExpanded from './ResourceExpanded';
 
+// create 2 number fields
+
 const ResourceModal = ({
   opened,
   setOpened,
