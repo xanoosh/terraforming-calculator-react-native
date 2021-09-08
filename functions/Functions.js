@@ -41,12 +41,4 @@ const handleResourceChange = (name, val, currentValuesArray) => {
   }
 };
 
-const getRelatedSetter = (setterName, currentValuesArray) => {
-  for (let i = 0; i < currentValuesArray.length; i++) {
-    if (currentValuesArray[i].name === setterName) {
-      return currentValuesArray[i].setter;
-    }
-  }
-};
-
 export { saveResource, handleReset, handleResourceChange, getRelatedSetter };

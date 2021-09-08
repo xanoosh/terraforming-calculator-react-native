@@ -9,7 +9,6 @@ import {
   loadValues,
   handleReset,
   handleResourceChange,
-  getRelatedSetter,
 } from './functions/Functions';
 import {
   addNewHistoryElement,

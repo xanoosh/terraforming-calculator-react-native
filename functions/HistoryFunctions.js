@@ -37,12 +37,17 @@ const removeLastHistoryElement = (historyArrName) => {
   ]);
 };
 
+//get setter by name
+const getRelatedSetter = (setterName, currentValuesArray) => {
+  for (let i = 0; i < currentValuesArray.length; i++) {
+    if (currentValuesArray[i].name === setterName) {
+      return currentValuesArray[i].setter;
+    }
+  }
+};
+
 //load values if available:
-const loadValuesFromHistoryArray = (
-  array,
-  getRelatedSetter,
-  currentValuesArray
-) => {
+const loadValuesFromHistoryArray = (array, currentValuesArray) => {
   const resourcesEl = array[array.length - 1];
   for (const el of resourcesEl) {
     const setter = getRelatedSetter(el.name, currentValuesArray);
