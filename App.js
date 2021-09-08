@@ -5,12 +5,17 @@ import ResourceList from './modules/ResourcesList';
 import TerraformingPoints from './modules/TerraformingPoints';
 import { mainStyles } from './style/styles.js';
 import {
-  // getData,
   saveResource,
   loadValues,
   handleReset,
   handleResourceChange,
+  getRelatedSetter,
 } from './functions/Functions';
+import {
+  addNewHistoryElement,
+  removeLastHistoryElement,
+  loadValuesFromHistoryArray,
+} from './functions/HistoryFunctions';
 
 import mImg from './assets/rmoney.png';
 import hImg from './assets/rheat.png';
@@ -54,6 +59,7 @@ export default function App() {
   //get stored data on load
   useEffect(() => {
     loadValues(valuesArray);
+    getResourceHistory();
   }, []);
 
   const handleAdvanceGeneration = () => {

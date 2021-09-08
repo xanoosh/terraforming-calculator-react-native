@@ -18,65 +18,6 @@ const saveResource = (name, val) => {
   })();
 };
 
-//Resource array history data start
-const getResourceHistory = async (arrayName) => {
-  try {
-    const array = await AsyncStorage.getItem(arrayName);
-    if (array !== null && Json.parse(array).length) return Json.parse(array);
-    else return false;
-  } catch (e) {
-    return false;
-  }
-};
-
-//cases:
-// 1.resource history set on load/reset
-// need some constant array for that.
-// 2. resource history on advGeneration (add new value to array)
-// 3. goback in history (remove las element and load again)
-// 4.any change in current array (resourceArr) changes last element of historyArray
-
-const updateResourceHistory = (arrName, historyArr) => {
-  (async () => {
-    await AsyncStorage.setItem(arrName, Json.stringify(historyArr));
-  })();
-};
-
-const createNewHistoryElement = (valuesArray) => {
-  return valuesArray.map((value) => ({
-    name: value.name,
-    value: value.value,
-  }));
-};
-
-const addNewHistoryElement = (historyArrName, valuesArray) => {
-  const current = getResourceHistory(historyArrName);
-  updateResourceHistory(historyArrName, [
-    ...current,
-    createNewHistoryElement(valuesArray),
-  ]);
-};
-const removeLastHistoryElement = (historyArrName) => {
-  const current = getResourceHistory(historyArrName);
-  updateResourceHistory(historyArrName, [
-    ...current.slice(0, current.length - 1),
-  ]);
-};
-
-//Resource array history data end
-
-//load values if available:
-const loadValues = async (currentValuesArray) => {
-  for (const value of currentValuesArray) {
-    try {
-      const resource = await getData(value.name);
-      value.setter(Number(resource));
-    } catch (e) {
-      return false;
-    }
-  }
-};
-
 //reset resoucers data:
 const handleReset = (currentValuesArray) => {
   currentValuesArray.forEach((value) => {
@@ -100,4 +41,12 @@ const handleResourceChange = (name, val, currentValuesArray) => {
   }
 };
 
-export { saveResource, loadValues, handleReset, handleResourceChange };
+const getRelatedSetter = (setterName, currentValuesArray) => {
+  for (let i = 0; i < currentValuesArray.length; i++) {
+    if (currentValuesArray[i].name === setterName) {
+      return currentValuesArray[i].setter;
+    }
+  }
+};
+
+export { saveResource, handleReset, handleResourceChange, getRelatedSetter };
