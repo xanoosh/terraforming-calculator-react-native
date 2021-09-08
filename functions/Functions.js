@@ -58,7 +58,9 @@ const addNewHistoryElement = (historyArrName, valuesArray) => {
 };
 const removeLastHistoryElement = (historyArrName) => {
   const current = getResourceHistory(historyArrName);
-  updateResourceHistory(historyArrName, [...current.shift(1, -1)]);
+  updateResourceHistory(historyArrName, [
+    ...current.slice(0, current.length - 1),
+  ]);
 };
 
 //Resource array history data end
