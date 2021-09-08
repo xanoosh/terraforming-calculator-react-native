@@ -37,16 +37,9 @@ const getResourceHistory = async (arrayName) => {
 // 4.any change in current array (resourceArr) changes last element of historyArray
 
 const updateResourceHistory = (arrName, historyArr) => {
-  if (!getResourceHistory(arrName)) {
-    (async () => {
-      await AsyncStorage.setItem(arrName, Json.stringify(historyArr));
-    })();
-  }
-  if (getResourceHistory(arrName)) {
-    (async () => {
-      await AsyncStorage.setItem(arrName, Json.stringify(historyArr));
-    })();
-  }
+  (async () => {
+    await AsyncStorage.setItem(arrName, Json.stringify(historyArr));
+  })();
 };
 
 const createNewHistoryElement = (valuesArray) => {
@@ -57,10 +50,15 @@ const createNewHistoryElement = (valuesArray) => {
 };
 
 const addNewHistoryElement = (historyArrName, valuesArray) => {
+  const current = getResourceHistory(historyArrName);
   updateResourceHistory(historyArrName, [
-    ...getResourceHistory(historyArrName),
+    ...current,
     createNewHistoryElement(valuesArray),
   ]);
+};
+const removeLastHistoryElement = (historyArrName) => {
+  const current = getResourceHistory(historyArrName);
+  updateResourceHistory(historyArrName, [...current.shift(1, -1)]);
 };
 
 //Resource array history data end
