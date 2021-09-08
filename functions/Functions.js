@@ -19,10 +19,10 @@ const saveResource = (name, val) => {
 };
 
 //Resource array history data start
-const getResourceHistory = async (array) => {
+const getResourceHistory = async (arrayName) => {
   try {
-    const value = await AsyncStorage.getItem(Json.stringify(array));
-    if (value !== null && Json.parse(array).length) return Json.parse(array);
+    const array = await AsyncStorage.getItem(arrayName);
+    if (array !== null && Json.parse(array).length) return Json.parse(array);
     else return false;
   } catch (e) {
     return false;
@@ -36,7 +36,7 @@ const getResourceHistory = async (array) => {
 // 3. goback in history (remove las element and load again)
 // 4.any change in current array (resourceArr) changes last element of historyArray
 
-const setResourceHistory = (arrName, historyArr) => {
+const updateResourceHistory = (arrName, historyArr) => {
   if (!getResourceHistory(arrName)) {
     (async () => {
       await AsyncStorage.setItem(arrName, Json.stringify(historyArr));
@@ -49,14 +49,17 @@ const setResourceHistory = (arrName, historyArr) => {
   }
 };
 
-const createNewHistoryElement = (valuesArray, historyArrName) => {
-  const newHistoryElement = valuesArray.map((value) => ({
+const createNewHistoryElement = (valuesArray) => {
+  return valuesArray.map((value) => ({
     name: value.name,
     value: value.value,
   }));
-  setResourceHistory(historyArrName, [
-    ...getResourceHistory(),
-    newHistoryElement,
+};
+
+const addNewHistoryElement = (historyArrName, valuesArray) => {
+  updateResourceHistory(historyArrName, [
+    ...getResourceHistory(historyArrName),
+    createNewHistoryElement(valuesArray),
   ]);
 };
 
