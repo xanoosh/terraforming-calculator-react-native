@@ -4,16 +4,13 @@ import { Text, View, Pressable } from 'react-native';
 import ResourceList from './modules/ResourcesList';
 import TerraformingPoints from './modules/TerraformingPoints';
 import { mainStyles } from './style/styles.js';
+
 import {
-  saveResource,
-  loadValues,
+  // addNewHistoryElement,
+  // removeLastHistoryElement,
+  loadValuesFromHistoryArray,
   handleReset,
   handleResourceChange,
-} from './functions/Functions';
-import {
-  addNewHistoryElement,
-  removeLastHistoryElement,
-  loadValuesFromHistoryArray,
 } from './functions/HistoryFunctions';
 
 import mImg from './assets/rmoney.png';
@@ -57,8 +54,8 @@ export default function App() {
 
   //get stored data on load
   useEffect(() => {
-    loadValues(valuesArray);
-    getResourceHistory();
+    loadValuesFromHistoryArray(valuesArray);
+    // getResourceHistory();
   }, []);
 
   const handleAdvanceGeneration = () => {
@@ -67,9 +64,8 @@ export default function App() {
     handleResourceChange('Titanium', titaniumProd, valuesArray);
     handleResourceChange('Plant', plantProd, valuesArray);
     handleResourceChange('Heat', energy + heatProd, valuesArray);
-    //energy on adv gen is always equal to energy production
-    setEnergy(energyProd);
-    saveResource('Energy', energyProd);
+    handleResourceChange('Energy', energyProd, valuesArray);
+    // saveResource('Energy', energyProd);
   };
   const handleGoBack = () => {
     handleResourceChange('Money', (moneyProd + TR) * -1, valuesArray);
