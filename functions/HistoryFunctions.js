@@ -32,12 +32,15 @@ const addNewHistoryElement = (valuesArray) => {
 
 const removeLastHistoryElement = () => {
   const historyArray = getResourceHistory('historyArray');
-  historyArray.pop();
-  updateResourceHistory(historyArray);
+  if (historyArray.length > 1) {
+    historyArray.pop();
+    updateResourceHistory(historyArray);
+  }
 };
 
 const mutateLastHistoryElement = (name, val) => {
   const historyArray = getResourceHistory('historyArray');
+  //problem is here:
   const lastHistoryElement = historyArray.pop();
   for (let i = 0; i < lastHistoryElement.length; i++) {
     if (lastHistoryElement[i].name === name) {
@@ -56,28 +59,16 @@ const getRelatedSetter = (setterName, currentValuesArray) => {
   }
 };
 
-//change specific item value:
-// const handleResourceChange = (name, val, currentValuesArray) => {
-//   for (let i = 0; i < currentValuesArray.length; i++) {
-//     if (currentValuesArray[i].name === name) {
-//       // saveResource(name, currentValuesArray[i].value + val);
-//       valuesArray[i].setter((prev) => prev + val);
-//     }
-//   }
-// };
-
 const handleResourceChange = (name, val, valuesArray) => {
   for (let i = 0; i < valuesArray.length; i++) {
     if (valuesArray[i].name === name) {
       valuesArray[i].setter((prev) => prev + val);
-      //mutate and update historyArray
       mutateLastHistoryElement(name, valuesArray[i].value);
     }
   }
 };
 
 const handleReset = (valuesArray) => {
-  const fullHistory = getResourceHistory();
   for (let i = 0; i < valuesArray.length; i++) {
     if (valuesArray[i].name === 'TR') {
       valuesArray[i].setter(20);
@@ -112,4 +103,5 @@ export {
   getRelatedSetter,
   handleResourceChange,
   handleReset,
+  mutateLastHistoryElement,
 };
