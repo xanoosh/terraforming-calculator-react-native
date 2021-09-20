@@ -24,9 +24,7 @@ const GenerationPanel = ({
         </Text>
       </Pressable>
       <View style={generationPanelStyles.generationContainer}>
-        <Text style={generationPanelStyles.generationTxt}>
-          Generation{genNumber}
-        </Text>
+        <Text style={generationPanelStyles.generationTxt}>Generation</Text>
         <Text style={generationPanelStyles.generationVal}>{genNumber}</Text>
       </View>
     </>

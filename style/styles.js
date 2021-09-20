@@ -65,12 +65,23 @@ const generationPanelStyles = StyleSheet.create({
   },
   generationContainer: {
     position: 'absolute',
-    bottom: '6.5%',
+    bottom: '5%',
     right: '5%',
     width: '20%',
   },
-  generationTxt: {},
-  generationVal: {},
+  generationTxt: {
+    width: '100%',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 10,
+  },
+  generationVal: {
+    width: '100%',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 20,
+    paddingTop: 1,
+  },
 });
 
 //resource list component:
