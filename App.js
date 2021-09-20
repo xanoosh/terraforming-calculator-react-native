@@ -63,7 +63,7 @@ export default function App() {
     handleResourceChange('Titanium', titaniumProd, valuesArray);
     handleResourceChange('Plant', plantProd, valuesArray);
     handleResourceChange('Heat', energy + heatProd, valuesArray);
-    handleResourceChange('Energy', energyProd, valuesArray);
+    handleResourceChange('Energy', energyProd, valuesArray, true);
     addNewHistoryElement(valuesArray, setGenNumber);
   };
   const handleGoBack = () => {

@@ -6,7 +6,7 @@ const TerraformingPoints = ({ name, value, setter, valuesArray }) => {
   return (
     <View style={terraformingPointsStyles.cell}>
       <View style={terraformingPointsStyles.row}>
-        <Text style={terraformingPointsStyles.name}>Points</Text>
+        <Text style={terraformingPointsStyles.name}>TR</Text>
       </View>
       <View style={terraformingPointsStyles.row}>
         <Pressable

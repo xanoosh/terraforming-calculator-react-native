@@ -276,7 +276,7 @@ const terraformingPointsStyles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    fontSize: 13,
+    fontSize: 15,
   },
   value: {
     color: '#fff',

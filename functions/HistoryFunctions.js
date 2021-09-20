@@ -1,5 +1,3 @@
-// resource history array data manipulation:
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const getResourceHistory = async () => {
@@ -68,11 +66,17 @@ const getRelatedSetter = (setterName, currentValuesArray) => {
   }
 };
 
-const handleResourceChange = (name, val, valuesArray) => {
+const handleResourceChange = (name, val, valuesArray, edgeCase = false) => {
   for (let i = 0; i < valuesArray.length; i++) {
     if (valuesArray[i].name === name) {
-      valuesArray[i].setter((prev) => prev + val);
-      valuesArray[i].value += val;
+      if (edgeCase) {
+        valuesArray[i].setter(val);
+        valuesArray[i].value = val;
+      }
+      if (!edgeCase) {
+        valuesArray[i].setter((prev) => prev + val);
+        valuesArray[i].value += val;
+      }
     }
   }
   mutateLastHistoryElement(valuesArray);
@@ -93,7 +97,6 @@ const handleReset = async (valuesArray, setGeneration) => {
   setGeneration([firstElement].length);
 };
 
-//load values if available on load:
 const loadValuesFromHistoryArray = async (valuesArray, setGeneration) => {
   const array = await getResourceHistory();
   if (array) {
