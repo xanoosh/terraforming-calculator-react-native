@@ -53,7 +53,6 @@ const removeLastHistoryElement = async (valuesArray, setGeneration) => {
   }
 };
 
-//mutate lasthistory array element with current valuesArray
 const mutateLastHistoryElement = async (valuesArray) => {
   const historyArray = await getResourceHistory('historyArray');
   historyArray.pop();
@@ -61,7 +60,6 @@ const mutateLastHistoryElement = async (valuesArray) => {
   updateResourceHistory([...historyArray, newElement]);
 };
 
-//get setter by name
 const getRelatedSetter = (setterName, currentValuesArray) => {
   for (let i = 0; i < currentValuesArray.length; i++) {
     if (currentValuesArray[i].name === setterName) {
@@ -84,7 +82,11 @@ const handleReset = async (valuesArray, setGeneration) => {
   for (let i = 0; i < valuesArray.length; i++) {
     if (valuesArray[i].name === 'TR') {
       valuesArray[i].setter(20);
-    } else valuesArray[i].setter(0);
+      valuesArray[i].value = 20;
+    } else {
+      valuesArray[i].setter(0);
+      valuesArray[i].value = 0;
+    }
   }
   const firstElement = createNewHistoryElement(valuesArray);
   updateResourceHistory([firstElement]);
