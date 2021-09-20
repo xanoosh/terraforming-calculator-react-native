@@ -74,9 +74,10 @@ const handleResourceChange = (name, val, valuesArray) => {
   for (let i = 0; i < valuesArray.length; i++) {
     if (valuesArray[i].name === name) {
       valuesArray[i].setter((prev) => prev + val);
-      mutateLastHistoryElement(valuesArray);
+      valuesArray[i].value += val;
     }
   }
+  mutateLastHistoryElement(valuesArray);
 };
 
 const handleReset = async (valuesArray, setGeneration) => {
