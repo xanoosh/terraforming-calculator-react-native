@@ -27,27 +27,29 @@ const createNewHistoryElement = (valuesArray) => {
   }));
 };
 
-const addNewHistoryElement = async (valuesArray) => {
+const addNewHistoryElement = async (valuesArray, setGeneration) => {
   const current = await getResourceHistory('historyArray');
   if (current) {
-    updateResourceHistory([...current, createNewHistoryElement(valuesArray)]);
+    const newArray = [...current, createNewHistoryElement(valuesArray)];
+    updateResourceHistory(newArray);
+    setGeneration(newArray.length);
   }
 };
 
-const removeLastHistoryElement = async (valuesArray) => {
+const setValuesFromHistory = async (array, valuesArray) => {
+  for (const el of array) {
+    const setter = getRelatedSetter(el.name, valuesArray);
+    setter(Number(el.value));
+  }
+};
+
+const removeLastHistoryElement = async (valuesArray, setGeneration) => {
   const historyArray = await getResourceHistory('historyArray');
   if (historyArray && historyArray.length > 1) {
     historyArray.pop();
     updateResourceHistory(historyArray);
     setValuesFromHistory(historyArray[historyArray.length - 1], valuesArray);
-  }
-};
-
-const setValuesFromHistory = async (array, valuesArray) => {
-  // const resourcesData = array[array.length];
-  for (const el of array) {
-    const setter = getRelatedSetter(el.name, valuesArray);
-    setter(Number(el.value));
+    setGeneration(historyArray.length);
   }
 };
 
@@ -72,13 +74,12 @@ const handleResourceChange = (name, val, valuesArray) => {
   for (let i = 0; i < valuesArray.length; i++) {
     if (valuesArray[i].name === name) {
       valuesArray[i].setter((prev) => prev + val);
-      // valuesArray[i].setter((prev) => prev + 100);
       mutateLastHistoryElement(valuesArray);
     }
   }
 };
 
-const handleReset = async (valuesArray, generationsNumberSetter) => {
+const handleReset = async (valuesArray, setGeneration) => {
   for (let i = 0; i < valuesArray.length; i++) {
     if (valuesArray[i].name === 'TR') {
       valuesArray[i].setter(20);
@@ -86,26 +87,24 @@ const handleReset = async (valuesArray, generationsNumberSetter) => {
   }
   const firstElement = createNewHistoryElement(valuesArray);
   updateResourceHistory([firstElement]);
-  generationsNumberSetter(1);
+  setGeneration([firstElement].length);
 };
 
-//load values if available:
-const loadValuesFromHistoryArray = async (valuesArray) => {
+//load values if available on load:
+const loadValuesFromHistoryArray = async (valuesArray, setGeneration) => {
   const array = await getResourceHistory();
   if (array) {
     setValuesFromHistory(array[array.length - 1], valuesArray);
+    setGeneration(array.length);
   } else {
     for (const el of valuesArray) {
       const setter = getRelatedSetter(el.name, valuesArray);
       setter(Number(el.value));
     }
-    updateResourceHistory(createNewHistoryElement(valuesArray));
+    const startingArray = [createNewHistoryElement(valuesArray)];
+    updateResourceHistory(startingArray);
+    setGeneration(startingArray);
   }
-};
-
-const setResourceHistoryLength = async (setter) => {
-  const arr = await getResourceHistory();
-  setter(arr.length);
 };
 
 export {
@@ -116,5 +115,4 @@ export {
   handleResourceChange,
   handleReset,
   mutateLastHistoryElement,
-  setResourceHistoryLength,
 };

@@ -10,7 +10,6 @@ import {
   loadValuesFromHistoryArray,
   handleReset,
   handleResourceChange,
-  setResourceHistoryLength,
   removeLastHistoryElement,
 } from './functions/HistoryFunctions';
 
@@ -35,7 +34,7 @@ export default function App() {
   const [heat, setHeat] = useState(0);
   const [heatProd, setHeatProd] = useState(0);
   const [TR, setTR] = useState(20);
-  const [generationsNumber, setGenerationsNumber] = useState(0);
+  const [genNumber, setGenNumber] = useState(0);
 
   const valuesArray = [
     { name: 'Money', value: money, setter: setMoney, img: mImg },
@@ -55,37 +54,27 @@ export default function App() {
 
   //get stored data on load
   useEffect(() => {
-    loadValuesFromHistoryArray(valuesArray);
-    setResourceHistoryLength(setGenerationsNumber);
+    loadValuesFromHistoryArray(valuesArray, setGenNumber);
   }, []);
 
-  const handleAdvanceGeneration = () => {
+  const handleAdvanceGeneration = async () => {
     handleResourceChange('Money', moneyProd + TR, valuesArray);
     handleResourceChange('Steel', steelProd, valuesArray);
     handleResourceChange('Titanium', titaniumProd, valuesArray);
     handleResourceChange('Plant', plantProd, valuesArray);
     handleResourceChange('Heat', energy + heatProd, valuesArray);
     handleResourceChange('Energy', energyProd, valuesArray);
-    addNewHistoryElement(valuesArray);
-    setResourceHistoryLength(setGenerationsNumber);
+    addNewHistoryElement(valuesArray, setGenNumber);
   };
   const handleGoBack = () => {
-    // handleResourceChange('Money', (moneyProd + TR) * -1, valuesArray);
-    // handleResourceChange('Steel', steelProd * -1, valuesArray);
-    // handleResourceChange('Titanium', titaniumProd * -1, valuesArray);
-    // handleResourceChange('Plant', plantProd * -1, valuesArray);
-    // handleResourceChange('Heat', (energy + heatProd) * -1, valuesArray);
-    // setEnergy(energyProd);
-    // saveResource('Energy', energyProd);
-    removeLastHistoryElement(valuesArray);
-    setResourceHistoryLength(setGenerationsNumber);
+    removeLastHistoryElement(valuesArray, setGenNumber);
   };
   return (
     <View style={mainStyles.container}>
       <View style={mainStyles.viewTop}>
         <Pressable
           style={mainStyles.resetBtn}
-          onPress={() => handleReset(valuesArray, setGenerationsNumber)}
+          onPress={() => handleReset(valuesArray, setGenNumber)}
         >
           <Text style={mainStyles.resetBtnTxt}>Reset</Text>
         </Pressable>
@@ -109,7 +98,7 @@ export default function App() {
       >
         <Text style={mainStyles.advanceBtnTxt}>Advance Generation</Text>
       </Pressable>
-      <Text style={{ color: 'white' }}>length:{generationsNumber}</Text>
+      <Text style={{ color: 'white' }}>length:{genNumber}</Text>
     </View>
   );
 }
