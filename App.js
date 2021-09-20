@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, Pressable } from 'react-native';
 
-import ResourceList from './modules/ResourcesList';
 import TerraformingPoints from './modules/TerraformingPoints';
+import ResourceList from './modules/ResourcesList';
+import GenerationPanel from './modules/GenerationPanel';
 import { mainStyles } from './style/styles.js';
 
 import {
@@ -89,16 +90,12 @@ export default function App() {
         valuesArray={valuesArray}
         handleResourceChange={handleResourceChange}
       />
-      <Pressable style={mainStyles.backBtn} onPress={() => handleGoBack()}>
-        <Text style={mainStyles.backBtnTxt}>Back</Text>
-      </Pressable>
-      <Pressable
-        style={mainStyles.advanceBtn}
-        onPress={() => handleAdvanceGeneration()}
-      >
-        <Text style={mainStyles.advanceBtnTxt}>Advance Generation</Text>
-      </Pressable>
-      <Text style={{ color: 'white' }}>length:{genNumber}</Text>
+
+      <GenerationPanel
+        handleAdvanceGeneration={handleAdvanceGeneration}
+        handleGoBack={handleGoBack}
+        genNumber={genNumber}
+      />
     </View>
   );
 }

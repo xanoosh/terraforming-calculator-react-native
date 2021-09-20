@@ -36,11 +36,13 @@ const mainStyles = StyleSheet.create({
     textAlign: 'center',
     width: 50,
   },
+});
+
+const generationPanelStyles = StyleSheet.create({
   advanceBtn: {
     width: '50%',
     position: 'absolute',
     bottom: '5%',
-    // backgroundColor: '#4695ec',
     backgroundColor: '#447CEE',
     padding: 9,
   },
@@ -49,7 +51,6 @@ const mainStyles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontSize: 16,
-    // fontWeight: 'bold',
   },
   backBtn: {
     position: 'absolute',
@@ -62,6 +63,14 @@ const mainStyles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
   },
+  generationContainer: {
+    position: 'absolute',
+    bottom: '6.5%',
+    right: '5%',
+    width: '20%',
+  },
+  generationTxt: {},
+  generationVal: {},
 });
 
 //resource list component:
@@ -310,4 +319,5 @@ export {
   resourceModalStyles,
   singleResourceCellStyles,
   terraformingPointsStyles,
+  generationPanelStyles,
 };
