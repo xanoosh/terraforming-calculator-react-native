@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //get AsyncStorage data or return false
 // const getData = async (name) => {
@@ -35,7 +35,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // const handleResourceChange = (name, val, currentValuesArray) => {
 //   for (let i = 0; i < currentValuesArray.length; i++) {
 //     if (currentValuesArray[i].name === name) {
-//       // saveResource(name, currentValuesArray[i].value + val);
 //       valuesArray[i].setter((prev) => prev + val);
 //     }
 //   }

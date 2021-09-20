@@ -6,11 +6,12 @@ import TerraformingPoints from './modules/TerraformingPoints';
 import { mainStyles } from './style/styles.js';
 
 import {
-  // addNewHistoryElement,
-  // removeLastHistoryElement,
+  addNewHistoryElement,
   loadValuesFromHistoryArray,
   handleReset,
   handleResourceChange,
+  setResourceHistoryLength,
+  removeLastHistoryElement,
 } from './functions/HistoryFunctions';
 
 import mImg from './assets/rmoney.png';
@@ -55,7 +56,7 @@ export default function App() {
   //get stored data on load
   useEffect(() => {
     loadValuesFromHistoryArray(valuesArray);
-    // getResourceHistory();
+    setResourceHistoryLength(setGenerationsNumber);
   }, []);
 
   const handleAdvanceGeneration = () => {
@@ -65,23 +66,26 @@ export default function App() {
     handleResourceChange('Plant', plantProd, valuesArray);
     handleResourceChange('Heat', energy + heatProd, valuesArray);
     handleResourceChange('Energy', energyProd, valuesArray);
-    // saveResource('Energy', energyProd);
+    addNewHistoryElement(valuesArray);
+    setResourceHistoryLength(setGenerationsNumber);
   };
   const handleGoBack = () => {
-    handleResourceChange('Money', (moneyProd + TR) * -1, valuesArray);
-    handleResourceChange('Steel', steelProd * -1, valuesArray);
-    handleResourceChange('Titanium', titaniumProd * -1, valuesArray);
-    handleResourceChange('Plant', plantProd * -1, valuesArray);
-    handleResourceChange('Heat', (energy + heatProd) * -1, valuesArray);
-    setEnergy(energyProd);
-    saveResource('Energy', energyProd);
+    // handleResourceChange('Money', (moneyProd + TR) * -1, valuesArray);
+    // handleResourceChange('Steel', steelProd * -1, valuesArray);
+    // handleResourceChange('Titanium', titaniumProd * -1, valuesArray);
+    // handleResourceChange('Plant', plantProd * -1, valuesArray);
+    // handleResourceChange('Heat', (energy + heatProd) * -1, valuesArray);
+    // setEnergy(energyProd);
+    // saveResource('Energy', energyProd);
+    removeLastHistoryElement(valuesArray);
+    setResourceHistoryLength(setGenerationsNumber);
   };
   return (
     <View style={mainStyles.container}>
       <View style={mainStyles.viewTop}>
         <Pressable
           style={mainStyles.resetBtn}
-          onPress={() => handleReset(valuesArray)}
+          onPress={() => handleReset(valuesArray, setGenerationsNumber)}
         >
           <Text style={mainStyles.resetBtnTxt}>Reset</Text>
         </Pressable>
@@ -105,7 +109,7 @@ export default function App() {
       >
         <Text style={mainStyles.advanceBtnTxt}>Advance Generation</Text>
       </Pressable>
-      <Text>{generationsNumber}</Text>
+      <Text style={{ color: 'white' }}>length:{generationsNumber}</Text>
     </View>
   );
 }
