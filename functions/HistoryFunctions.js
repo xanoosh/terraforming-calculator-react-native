@@ -6,6 +6,7 @@ import {
   getRelatedSetter,
 } from './BaseFunctions.js';
 
+//load values from history or create new history from values array, set generation count
 const loadValuesFromHistoryArray = async (valuesArray, setGeneration) => {
   const historyArray = await getResourceHistory();
   if (historyArray) {
@@ -21,7 +22,7 @@ const loadValuesFromHistoryArray = async (valuesArray, setGeneration) => {
     setGeneration(startingArray);
   }
 };
-
+// add new history element from values array and set generation count
 const addNewHistoryElement = async (valuesArray, setGeneration) => {
   const current = await getResourceHistory('historyArray');
   if (current) {
@@ -30,7 +31,7 @@ const addNewHistoryElement = async (valuesArray, setGeneration) => {
     setGeneration(newArray.length);
   }
 };
-
+//remove last element from history array and set generation count
 const removeLastHistoryElement = async (valuesArray, setGeneration) => {
   const historyArray = await getResourceHistory('historyArray');
   if (historyArray && historyArray.length > 1) {
