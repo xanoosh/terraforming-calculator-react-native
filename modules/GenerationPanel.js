@@ -6,6 +6,8 @@ const GenerationPanel = ({
   handleGoBack,
   handleAdvanceGeneration,
   genNumber,
+  valuesArray,
+  setGenNumber,
 }) => {
   return (
     <>
@@ -17,7 +19,7 @@ const GenerationPanel = ({
       </Pressable>
       <Pressable
         style={generationPanelStyles.advanceBtn}
-        onPress={() => handleAdvanceGeneration()}
+        onPress={() => handleAdvanceGeneration(valuesArray, setGenNumber)}
       >
         <Text style={generationPanelStyles.advanceBtnTxt}>
           Advance Generation

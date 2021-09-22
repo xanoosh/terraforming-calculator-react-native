@@ -5,15 +5,12 @@ import TerraformingPoints from './modules/TerraformingPoints';
 import ResourceList from './modules/ResourcesList';
 import GenerationPanel from './modules/GenerationPanel';
 import { mainStyles } from './style/styles.js';
-
 import {
-  loadValuesFromHistoryArray,
-  addNewHistoryElement,
-  removeLastHistoryElement,
-} from './functions/HistoryFunctions';
-import {
-  handleReset,
   handleResourceChange,
+  handleReset,
+  handleAdvanceGeneration,
+  handleGoBack,
+  handleAppMount,
 } from './functions/HandlerFunctions';
 
 import mImg from './assets/rmoney.png';
@@ -55,23 +52,10 @@ export default function App() {
     { name: 'TR', value: TR, setter: setTR },
   ];
 
-  //get stored data on load
   useEffect(() => {
-    loadValuesFromHistoryArray(valuesArray, setGenNumber);
+    handleAppMount(valuesArray, setGenNumber);
   }, []);
 
-  const handleAdvanceGeneration = async () => {
-    handleResourceChange('Money', moneyProd + TR, valuesArray);
-    handleResourceChange('Steel', steelProd, valuesArray);
-    handleResourceChange('Titanium', titaniumProd, valuesArray);
-    handleResourceChange('Plant', plantProd, valuesArray);
-    handleResourceChange('Heat', energy + heatProd, valuesArray);
-    handleResourceChange('Energy', energyProd, valuesArray, true);
-    addNewHistoryElement(valuesArray, setGenNumber);
-  };
-  const handleGoBack = () => {
-    removeLastHistoryElement(valuesArray, setGenNumber);
-  };
   return (
     <View style={mainStyles.container}>
       <View style={mainStyles.viewTop}>
@@ -97,6 +81,8 @@ export default function App() {
         handleAdvanceGeneration={handleAdvanceGeneration}
         handleGoBack={handleGoBack}
         genNumber={genNumber}
+        valuesArray={valuesArray}
+        setGenNumber={setGenNumber}
       />
     </View>
   );
