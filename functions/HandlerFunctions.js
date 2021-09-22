@@ -4,6 +4,7 @@ import {
   mutateLastHistoryElement,
 } from './BaseFunctions.js';
 
+//set base resource, TR points and generation count and reset history array
 const handleReset = async (valuesArray, setGeneration) => {
   for (let i = 0; i < valuesArray.length; i++) {
     if (valuesArray[i].name === 'TR') {
@@ -18,7 +19,7 @@ const handleReset = async (valuesArray, setGeneration) => {
   updateResourceHistory([firstElement]);
   setGeneration([firstElement].length);
 };
-
+// change resource values in current state and reset last history element with these values
 const handleResourceChange = (name, val, valuesArray, edgeCase = false) => {
   for (let i = 0; i < valuesArray.length; i++) {
     if (valuesArray[i].name === name) {
