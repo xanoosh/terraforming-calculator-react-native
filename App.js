@@ -7,12 +7,14 @@ import GenerationPanel from './modules/GenerationPanel';
 import { mainStyles } from './style/styles.js';
 
 import {
-  addNewHistoryElement,
   loadValuesFromHistoryArray,
-  handleReset,
-  handleResourceChange,
+  addNewHistoryElement,
   removeLastHistoryElement,
 } from './functions/HistoryFunctions';
+import {
+  handleReset,
+  handleResourceChange,
+} from './functions/HandlerFunctions';
 
 import mImg from './assets/rmoney.png';
 import hImg from './assets/rheat.png';
