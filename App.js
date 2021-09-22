@@ -12,6 +12,7 @@ import {
   handleGoBack,
   handleAppMount,
 } from './functions/HandlerFunctions';
+import { addNewHistoryElement } from './functions/HistoryFunctions';
 
 import mImg from './assets/rmoney.png';
 import hImg from './assets/rheat.png';
@@ -56,6 +57,16 @@ export default function App() {
     handleAppMount(valuesArray, setGenNumber);
   }, []);
 
+  const handleAdvGeneration = (valuesArray, setGenNumber) => {
+    handleResourceChange('Money', moneyProd + TR, valuesArray);
+    handleResourceChange('Steel', steelProd, valuesArray);
+    handleResourceChange('Titanium', titaniumProd, valuesArray);
+    handleResourceChange('Plant', plantProd, valuesArray);
+    handleResourceChange('Heat', energy + heatProd, valuesArray);
+    handleResourceChange('Energy', energyProd, valuesArray, true);
+    addNewHistoryElement(valuesArray, setGenNumber);
+  };
+
   return (
     <View style={mainStyles.container}>
       <View style={mainStyles.viewTop}>
@@ -78,7 +89,7 @@ export default function App() {
       />
 
       <GenerationPanel
-        handleAdvanceGeneration={handleAdvanceGeneration}
+        handleAdvanceGeneration={handleAdvGeneration}
         handleGoBack={handleGoBack}
         genNumber={genNumber}
         valuesArray={valuesArray}

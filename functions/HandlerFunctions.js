@@ -48,46 +48,42 @@ const handleResourceChange = (name, val, valuesArray, edgeCase = false) => {
 const handleGoBack = (valuesArray, setGenNumber) => {
   removeLastHistoryElement(valuesArray, setGenNumber);
 };
-// calculate resources
-//[Unhandled promise rejection: TypeError: undefined is not an object (evaluating 'productionArray[i].value')]
-const handleAdvanceGeneration = async (valuesArray, setGenNumber) => {
-  const productionArray = valuesArray.map((el, i) => {
-    if (i % 2 === 0) {
-      return { name: el.name, value: el.value };
-    }
-  });
-  const namesArray = valuesArray.map((el, i) => {
-    if (i % 2 !== 0) return el.name;
-  });
-  const [trElement] = valuesArray.filter((el) => el.name === 'TR');
-  const [energyElement] = valuesArray.filter((el) => el.name === 'Energy');
-  for (let i = 0; i < 6; i++) {
-    if (namesArray[i] === 'Money') {
-      const value = productionArray[i].value + trElement.value;
-      handleResourceChange(namesArray[i], value, valuesArray);
-    }
-    if (namesArray[i] === 'Heat') {
-      const value = productionArray[i].value + energyElement.value;
-      handleResourceChange(namesArray[i], value, valuesArray);
-    }
-    if (namesArray[i] === 'Energy') {
-      const value = productionArray[i].value;
-      handleResourceChange(namesArray[i], value, valuesArray, true);
-    } else {
-      const value = productionArray[i].value;
-      handleResourceChange(namesArray[i], value, valuesArray, true);
-    }
-  }
-  addNewHistoryElement(valuesArray, setGenNumber);
 
-  //   handleResourceChange('Money', moneyProd + TR, valuesArray);
-  //   handleResourceChange('Steel', steelProd, valuesArray);
-  //   handleResourceChange('Titanium', titaniumProd, valuesArray);
-  //   handleResourceChange('Plant', plantProd, valuesArray);
-  //   handleResourceChange('Heat', energy + heatProd, valuesArray);
-  //   handleResourceChange('Energy', energyProd, valuesArray, true);
-  //   addNewHistoryElement(valuesArray, setGenNumber);
+// calculate resources
+// undefined is not an object (evaluating 'productionArray[i].value')]
+
+//fixing functions start
+const handleAdvanceGeneration = (valuesArray, setGenNumber) => {
+  const resources = valuesArray.map((el, i) => {
+    if ((i + 1) % 2 !== 0) {
+      const { name, value } = el;
+      return { name, value };
+    }
+  });
+  valuesArray.forEach((el, i) => {
+    if ((i + 1) % 2 === 0) {
+      resources[i - 1].prod = el.value;
+    }
+  });
+
+  const [{ value: trCount }] = valuesArray.filter((el) => el.name === 'TR');
+  const [{ value: energyVal }] = valuesArray.filter(
+    (el) => el.name === 'Energy'
+  );
+  resources.forEach((el) => {
+    if (el.name === 'Money') {
+      handleResourceChange(el.name, el.prod + trCount, valuesArray);
+    }
+    if (el.name === 'Heat') {
+      handleResourceChange(el.name, el.prod + energyVal, valuesArray);
+    }
+    if (el.name === 'Energy') {
+      handleResourceChange(el.name, el.prod, valuesArray, true);
+    } else handleResourceChange(el.name, el.prod, valuesArray);
+  });
+  addNewHistoryElement(valuesArray, setGenNumber);
 };
+//fixing functions end
 
 export {
   handleResourceChange,
@@ -96,3 +92,35 @@ export {
   handleGoBack,
   handleAppMount,
 };
+
+// const handleAdvanceGeneration = (valuesArray, setGenNumber) => {
+//   const productionVals = valuesArray.map((el, i) => {
+//     if ((i + 1) % 2 === 0) {
+//       // return Number(el.value);
+//       return 1;
+//     }
+//   });
+//   const namesArray = valuesArray.map((el, i) => {
+//     if ((i + 1) % 2 !== 0) return el.name;
+//   });
+//   const [trElement] = valuesArray.filter((el) => el.name === 'TR');
+//   const [energyElement] = valuesArray.filter((el) => el.name === 'Energy');
+//   for (let i = 0; i < 12; i++) {
+//     if (namesArray[i] === 'Money') {
+//       const value = trElement.value;
+//       handleResourceChange(namesArray[i], value, valuesArray);
+//     }
+//     if (namesArray[i] === 'Heat') {
+//       const value = productionVals[i] + energyElement.value;
+//       handleResourceChange(namesArray[i], value, valuesArray);
+//     }
+//     if (namesArray[i] === 'Energy') {
+//       const value = productionVals[i];
+//       handleResourceChange(namesArray[i], value, valuesArray, true);
+//     } else {
+//       const value = productionVals[i];
+//       handleResourceChange(namesArray[i], value, valuesArray, true);
+//     }
+//   }
+//   addNewHistoryElement(valuesArray, setGenNumber);
+// };
