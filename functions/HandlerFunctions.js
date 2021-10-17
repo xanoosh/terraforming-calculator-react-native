@@ -49,17 +49,19 @@ const handleGoBack = (valuesArray, setGenNumber) => {
   removeLastHistoryElement(valuesArray, setGenNumber);
 };
 
-// calculate resources
+// calculate resources on advance gen
 // undefined is not an object (evaluating 'productionArray[i].value')]
 
 //fixing functions start
 const handleAdvanceGeneration = (valuesArray, setGenNumber) => {
-  const resources = valuesArray.map((el, i) => {
-    if ((i + 1) % 2 !== 0) {
+  const resources = valuesArray.filter((el, i) => {
+    if (i % 2 === 0) {
       const { name, value } = el;
       return { name, value };
     }
   });
+
+  // TypeError: undefined is not an object (evaluating 'resources[i - 1].prod = el.value')
   valuesArray.forEach((el, i) => {
     if ((i + 1) % 2 === 0) {
       resources[i - 1].prod = el.value;
@@ -70,7 +72,9 @@ const handleAdvanceGeneration = (valuesArray, setGenNumber) => {
   const [{ value: energyVal }] = valuesArray.filter(
     (el) => el.name === 'Energy'
   );
+
   resources.forEach((el) => {
+    // TypeError: undefined is not an object (evaluating 'el.name')
     if (el.name === 'Money') {
       handleResourceChange(el.name, el.prod + trCount, valuesArray);
     }
