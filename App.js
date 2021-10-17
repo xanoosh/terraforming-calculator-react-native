@@ -57,15 +57,15 @@ export default function App() {
     handleAppMount(valuesArray, setGenNumber);
   }, []);
 
-  const handleAdvGeneration = (valuesArray, setGenNumber) => {
-    handleResourceChange('Money', moneyProd + TR, valuesArray);
-    handleResourceChange('Steel', steelProd, valuesArray);
-    handleResourceChange('Titanium', titaniumProd, valuesArray);
-    handleResourceChange('Plant', plantProd, valuesArray);
-    handleResourceChange('Heat', energy + heatProd, valuesArray);
-    handleResourceChange('Energy', energyProd, valuesArray, true);
-    addNewHistoryElement(valuesArray, setGenNumber);
-  };
+  // const handleAdvGeneration = (valuesArray, setGenNumber) => {
+  //   handleResourceChange('Money', moneyProd + TR, valuesArray);
+  //   handleResourceChange('Steel', steelProd, valuesArray);
+  //   handleResourceChange('Titanium', titaniumProd, valuesArray);
+  //   handleResourceChange('Plant', plantProd, valuesArray);
+  //   handleResourceChange('Heat', energy + heatProd, valuesArray);
+  //   handleResourceChange('Energy', energyProd, valuesArray, true);
+  //   addNewHistoryElement(valuesArray, setGenNumber);
+  // };
 
   return (
     <View style={mainStyles.container}>
@@ -89,7 +89,7 @@ export default function App() {
       />
 
       <GenerationPanel
-        handleAdvanceGeneration={handleAdvGeneration}
+        handleAdvanceGeneration={handleAdvanceGeneration}
         handleGoBack={handleGoBack}
         genNumber={genNumber}
         valuesArray={valuesArray}
