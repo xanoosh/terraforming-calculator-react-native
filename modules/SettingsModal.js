@@ -38,7 +38,7 @@ const SettingsModal = ({
           {/* settings content here */}
 
           <View style={settingsModalStyles.settingsView}>
-            <Text>Screen always on</Text>
+            <Text style={settingsModalStyles.btnHeading}>Reset all data</Text>
             <Pressable
               style={settingsModalStyles.btn}
               onPress={() => {
@@ -46,11 +46,11 @@ const SettingsModal = ({
                 setOpened(!opened);
               }}
             >
-              <Text style={settingsModalStyles.btnTxt}>reset</Text>
+              <Text style={settingsModalStyles.btnTxt}>Reset</Text>
             </Pressable>
           </View>
           <View style={settingsModalStyles.settingsView}>
-            <Text>Screen always on</Text>
+            <Text style={settingsModalStyles.btnHeading}>Screen always on</Text>
             <Pressable
               style={settingsModalStyles.btn}
               onPress={() => {
@@ -59,7 +59,7 @@ const SettingsModal = ({
               }}
             >
               <Text style={settingsModalStyles.btnTxt}>
-                {keepAwake ? 'Turn Off' : 'Turn On'}
+                {keepAwake ? 'Turn off' : 'Turn on'}
               </Text>
             </Pressable>
           </View>
