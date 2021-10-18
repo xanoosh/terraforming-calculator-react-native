@@ -322,12 +322,22 @@ const terraformingPointsStyles = StyleSheet.create({
   },
 });
 
+//settingsModalStyles component
+const settingsModalStyles = StyleSheet.create({
+  img: {
+    width: 20,
+    height: 20,
+    marginLeft: 50,
+  },
+});
+
 export {
   mainStyles,
   resourcesListStyles,
   resourceStyles,
   resourceExpandedStyles,
   resourceModalStyles,
+  settingsModalStyles,
   singleResourceCellStyles,
   terraformingPointsStyles,
   generationPanelStyles,

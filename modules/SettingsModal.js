@@ -1,18 +1,23 @@
+import React from 'react';
+import { Modal, Pressable, Text, View, Image } from 'react-native';
 import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
-import React from 'react';
-import { Modal, Pressable, Text, View } from 'react-native';
-import React from 'react';
+import settingsImg from '../assets/settings-wheel.png';
+import { settingsModalStyles, resourceModalStyles } from '../style/styles.js';
 
-// create 2 number fields
-
-const SettingsModal = ({ opened, setOpened, keepAwake }) => {
+const SettingsModal = ({
+  opened,
+  setOpened,
+  keepAwake,
+  setKeepAwake,
+  resetHandler,
+}) => {
   return (
     <>
       <Pressable
-        style={settingsModalStyles.btnMore}
+        style={settingsModalStyles.btnSettings}
         onPress={() => setOpened(!opened)}
       >
-        <Text style={settingsModalStyles.btnMoreTxt}>expand</Text>
+        <Image style={settingsModalStyles.img} source={settingsImg} />
       </Pressable>
       <Modal
         animationType="slide"
@@ -23,24 +28,41 @@ const SettingsModal = ({ opened, setOpened, keepAwake }) => {
           setOpened(!opened);
         }}
       >
-        <View style={settingsModalStyles.centeredView}>
+        <View style={resourceModalStyles.centeredView}>
           <Pressable
-            style={settingsModalStyles.close}
+            style={resourceModalStyles.close}
             onPress={() => setOpened(!opened)}
           >
             <Text style={resourceModalStyles.closeContent}>×</Text>
           </Pressable>
           {/* settings content here */}
-          <Pressable
-            style={settingsModalStyles.awakeBtn}
-            onPress={() => {
-              keepAwake ? deactivateKeepAwake() : activateKeepAwake();
-            }}
-          >
-            <Text style={resourceModalStyles.awakeBtnTxt}>
-              {keepAwake ? 'Turn Off' : 'Turn On'}
-            </Text>
-          </Pressable>
+
+          <View style={settingsModalStyles.settingsView}>
+            <Text>Screen always on</Text>
+            <Pressable
+              style={settingsModalStyles.btn}
+              onPress={() => {
+                resetHandler();
+                setOpened(!opened);
+              }}
+            >
+              <Text style={settingsModalStyles.btnTxt}>reset</Text>
+            </Pressable>
+          </View>
+          <View style={settingsModalStyles.settingsView}>
+            <Text>Screen always on</Text>
+            <Pressable
+              style={settingsModalStyles.btn}
+              onPress={() => {
+                keepAwake ? deactivateKeepAwake() : activateKeepAwake();
+                setKeepAwake(!keepAwake);
+              }}
+            >
+              <Text style={settingsModalStyles.btnTxt}>
+                {keepAwake ? 'Turn Off' : 'Turn On'}
+              </Text>
+            </Pressable>
+          </View>
         </View>
       </Modal>
     </>
