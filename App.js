@@ -4,6 +4,7 @@ import { Text, View, Pressable } from 'react-native';
 import TerraformingPoints from './modules/TerraformingPoints';
 import ResourceList from './modules/ResourcesList';
 import GenerationPanel from './modules/GenerationPanel';
+import SettingsModal from './modules/SettingsModal';
 import { mainStyles } from './style/styles.js';
 import {
   handleResourceChange,
@@ -36,6 +37,8 @@ export default function App() {
   const [heatProd, setHeatProd] = useState(0);
   const [TR, setTR] = useState(20);
   const [genNumber, setGenNumber] = useState(0);
+  const [settingsModalOpened, setSettingsModalOpened] = useState(false);
+  const [keepAwake, setKeepAwake] = useState(false);
 
   const valuesArray = [
     { name: 'Money', value: money, setter: setMoney, img: mImg },
@@ -70,12 +73,19 @@ export default function App() {
   return (
     <View style={mainStyles.container}>
       <View style={mainStyles.viewTop}>
-        <Pressable
+        {/* <Pressable
           style={mainStyles.resetBtn}
           onPress={() => handleReset(valuesArray, setGenNumber)}
         >
           <Text style={mainStyles.resetBtnTxt}>Reset</Text>
-        </Pressable>
+        </Pressable> */}
+        <SettingsModal
+          opened={settingsModalOpened}
+          setOpened={setSettingsModalOpened}
+          keepAwake={keepAwake}
+          setKeepAwake={setKeepAwake}
+          resetHandler={() => handleReset(valuesArray, setGenNumber)}
+        />
         <TerraformingPoints
           name="TR"
           value={TR}
