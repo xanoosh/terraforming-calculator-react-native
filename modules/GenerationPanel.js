@@ -11,10 +11,7 @@ const GenerationPanel = ({
 }) => {
   return (
     <>
-      <Pressable
-        style={generationPanelStyles.backBtn}
-        onPress={() => handleGoBack()}
-      >
+      <Pressable style={generationPanelStyles.backBtn} onPress={handleGoBack}>
         <Text style={generationPanelStyles.backBtnTxt}>Back</Text>
       </Pressable>
       <Pressable

@@ -100,7 +100,7 @@ export default function App() {
 
       <GenerationPanel
         handleAdvanceGeneration={handleAdvGeneration}
-        handleGoBack={handleGoBack}
+        handleGoBack={() => handleGoBack(valuesArray, setGenNumber)}
         genNumber={genNumber}
         valuesArray={valuesArray}
         setGenNumber={setGenNumber}
