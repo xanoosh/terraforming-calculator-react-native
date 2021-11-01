@@ -72,8 +72,9 @@ const SettingsModal = ({
           <View style={settingsModalStyles.settingsView}>
             <Text style={settingsModalStyles.btnHeading}>Screen always on</Text>
             <Switch
-              trackColor={{ false: '#767577', true: '#81b0ff' }}
-              // style={({ scaleX: 100 }, { scaleY: 0.8 })}
+              thumbColor="#fff"
+              trackColor={{ false: '#767577', true: '#447CEE' }}
+              style={{ transform: [{ scaleX: 1.4 }, { scaleY: 1.4 }] }}
               onValueChange={() => {
                 keepAwake ? deactivateKeepAwake() : activateKeepAwake();
                 setKeepAwake(!keepAwake);

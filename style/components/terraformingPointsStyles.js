@@ -33,7 +33,6 @@ export default terraformingPointsStyles = StyleSheet.create({
   button: {
     width: 30,
     height: 30,
-    // backgroundColor: '#4695ec',
     backgroundColor: '#447CEE',
     display: 'flex',
     justifyContent: 'center',
