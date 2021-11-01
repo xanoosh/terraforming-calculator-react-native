@@ -19,6 +19,21 @@ const SettingsModal = ({
   setKeepAwake,
   resetHandler,
 }) => {
+  const handleAlert = () => {
+    Alert.alert('Reset', 'Reset all data?', [
+      {
+        text: 'Cancel',
+      },
+      {
+        text: 'OK',
+        onPress: () => {
+          resetHandler();
+          setOpened(!opened);
+        },
+      },
+    ]);
+  };
+
   return (
     <>
       <Pressable
@@ -49,10 +64,7 @@ const SettingsModal = ({
             <Text style={settingsModalStyles.btnHeading}>Reset all data</Text>
             <Pressable
               style={settingsModalStyles.btn}
-              onPress={() => {
-                resetHandler();
-                setOpened(!opened);
-              }}
+              onPress={() => handleAlert()}
             >
               <Text style={settingsModalStyles.btnTxt}>Reset</Text>
             </Pressable>
@@ -60,8 +72,8 @@ const SettingsModal = ({
           <View style={settingsModalStyles.settingsView}>
             <Text style={settingsModalStyles.btnHeading}>Screen always on</Text>
             <Switch
-              // trackColor={{ false: '#767577', true: '#81b0ff' }}
-              // thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+              trackColor={{ false: '#767577', true: '#81b0ff' }}
+              // style={({ scaleX: 100 }, { scaleY: 0.8 })}
               onValueChange={() => {
                 keepAwake ? deactivateKeepAwake() : activateKeepAwake();
                 setKeepAwake(!keepAwake);
